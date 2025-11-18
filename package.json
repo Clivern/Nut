@@ -1,7 +1,7 @@
 {
-  "name": "nut-style-guide",
-  "version": "0.1.0",
-  "description": "Reusable dashboard style guide extracted from Mut dashboard",
+  "name": "nut",
+  "version": "0.0.6",
+  "description": "A modern, reusable dashboard style guide built with Vue.js 3",
   "type": "module",
   "scripts": {
     "dev": "vite",

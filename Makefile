@@ -1,4 +1,4 @@
-.PHONY: help install dev build preview clean lint format test serve
+.PHONY: help install dev build clean serve check-deps stop-dev validate
 
 # Default target
 .DEFAULT_GOAL := help
@@ -24,22 +24,32 @@ ci-install: ## Install dependencies for CI (uses npm ci)
 	@echo "Installing dependencies for CI..."
 	$(NPM) ci
 
-dev: ## Start development server
+dev: check-deps ## Start development server
 	@echo "Starting development server..."
 	$(NPM) run dev
 
 serve: dev ## Alias for dev command
 
+stop-dev: ## Stop development server (if running)
+	@echo "Stopping development server..."
+	@-pkill -f "vite" || echo "No dev server process found"
+	@echo "Dev server stopped (if it was running)"
+
 ##@ Build
 
-build: ## Build project for production
+build: check-deps ## Build project for production
 	@echo "Building project for production..."
 	$(NPM) run build
 	@echo "Build complete! Output: $(DIST)/"
 
 preview: ## Preview production build
+	@if [ ! -d "$(DIST)" ]; then \
+		echo "No build found. Building first..."; \
+		$(MAKE) build; \
+	fi
 	@echo "Starting preview server..."
 	$(NPM) run preview
+
 
 ##@ Cleanup
 
@@ -86,6 +96,24 @@ setup: install ## Initial project setup (install dependencies)
 reinstall: clean-deps install ## Clean and reinstall dependencies
 	@echo "Dependencies reinstalled!"
 
+##@ Validation & Checks
+
+check-deps: ## Check if dependencies are installed
+	@if [ ! -d "$(NODE_MODULES)" ]; then \
+		echo "Dependencies not found. Installing..."; \
+		$(MAKE) install; \
+	fi
+
+validate: check-deps ## Validate project setup
+	@echo "Validating project setup..."
+	@echo "✓ Checking Node.js version..."
+	@node --version > /dev/null || (echo "✗ Node.js not found" && exit 1)
+	@echo "✓ Checking npm..."
+	@$(NPM) --version > /dev/null || (echo "✗ npm not found" && exit 1)
+	@echo "✓ Checking dependencies..."
+	@[ -d "$(NODE_MODULES)" ] || (echo "✗ Dependencies not installed" && exit 1)
+	@echo "✓ Project setup is valid!"
+
 ##@ Info
 
 version: ## Show Node.js and npm versions
@@ -95,7 +123,7 @@ version: ## Show Node.js and npm versions
 	@$(NPM) --version
 
 info: ## Show project information
-	@echo "Project: nut-style-guide"
+	@echo "Project: Nut"
 	@echo "Node.js: $$(node --version)"
 	@echo "npm: $$(npm --version)"
 	@echo "Dependencies installed: $$([ -d $(NODE_MODULES) ] && echo 'Yes' || echo 'No')"
@@ -112,4 +140,3 @@ quick-dev: ## Quick dev start (skip install check)
 
 quick-build: ## Quick build (skip clean)
 	@$(NPM) run build
-
