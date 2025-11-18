@@ -65,11 +65,30 @@
             >
               Calendar
             </router-link>
+            <router-link
+              to="/profile"
+              class="nav-link"
+              :class="{ 'nav-link-active': $route.path === '/profile' }"
+            >
+              Profile
+            </router-link>
+            <router-link
+              to="/subscription"
+              class="nav-link"
+              :class="{ 'nav-link-active': $route.path === '/subscription' }"
+            >
+              Subscription
+            </router-link>
           </div>
         </div>
         <div class="flex items-center">
           <div v-if="isAuthenticated" class="flex items-center space-x-3">
-            <span class="text-sm text-notion-textLight hidden sm:inline">{{ user?.name || user?.email }}</span>
+            <router-link
+              to="/profile"
+              class="text-sm text-notion-textLight hidden sm:inline hover:text-notion-text transition-colors"
+            >
+              {{ user?.name || user?.email }}
+            </router-link>
             <button
               @click="handleLogout"
               class="btn-secondary text-sm"
