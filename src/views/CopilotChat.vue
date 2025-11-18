@@ -2,7 +2,7 @@
   <div class="min-h-screen bg-notion-bg flex flex-col">
     <NavBar />
 
-    <main class="flex-1 flex flex-col max-w-7xl mx-auto w-full py-8 px-6 lg:px-8">
+    <main class="flex-1 flex flex-col w-full py-8 px-6 lg:px-8">
       <div class="page-header mb-6">
         <h1 class="page-title">AI Copilot</h1>
         <p class="page-subtitle">Chat with your AI assistant</p>

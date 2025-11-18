@@ -2,7 +2,7 @@
   <div class="min-h-screen bg-notion-bg">
     <NavBar />
 
-    <main class="max-w-7xl mx-auto py-8 px-6 lg:px-8">
+    <main class="w-full py-8 px-6 lg:px-8">
       <div class="page-header">
         <h1 class="page-title">Card Components</h1>
         <p class="page-subtitle">Various card styles and patterns</p>
