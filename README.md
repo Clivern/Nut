@@ -1,10 +1,10 @@
 # Nut Style Guide
 
-A modern, reusable dashboard style guide built with Vue.js 3, featuring a Notion-inspired design system. Nut provides a comprehensive set of components and patterns for building beautiful, responsive web applications.
+A modern, reusable dashboard style guide built with Vue.js 3, featuring a clean and elegant design system. Nut provides a comprehensive set of components and patterns for building beautiful, responsive web applications.
 
 ## ✨ Features
 
-- 🎨 **Notion-Inspired Design** - Clean, modern UI with a familiar feel
+- 🎨 **Clean Design** - Modern, elegant UI with a professional feel
 - 📱 **Fully Responsive** - Mobile-first design that works on all devices
 - 🧩 **Component Library** - Pre-built components ready to use
 - 🎯 **Vue 3 Composition API** - Modern Vue.js patterns
@@ -147,7 +147,7 @@ nut/
 
 ### Colors
 
-The design system uses a Notion-inspired color palette:
+The design system uses a clean, professional color palette:
 
 - **Background**: `#F7F6F3`
 - **Text**: `#37352F`
@@ -233,7 +233,7 @@ Customize colors, spacing, and other design tokens in `tailwind.config.js`:
 
 ```javascript
 colors: {
-  notion: {
+  theme: {
     bg: '#F7F6F3',
     text: '#37352F',
     textLight: '#6B6966',
@@ -287,7 +287,7 @@ This project is open source and available under the MIT License.
 
 ## 🙏 Acknowledgments
 
-- Design inspired by Notion
+- Clean and modern design system
 - Built with Vue.js and Tailwind CSS
 - Icons from Heroicons
 

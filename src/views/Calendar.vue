@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-notion-bg">
+  <div class="min-h-screen bg-theme-bg">
     <NavBar />
 
     <main class="w-full py-8 px-6 lg:px-8">
@@ -24,18 +24,18 @@
           <div class="flex items-center justify-between">
             <button
               @click="previousMonth"
-              class="p-2 text-notion-textLight hover:text-notion-text hover:bg-notion-hover rounded transition-colors"
+              class="p-2 text-theme-textLight hover:text-theme-text hover:bg-theme-hover rounded transition-colors"
             >
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
               </svg>
             </button>
             <div class="text-center">
-              <h2 class="text-xl font-semibold text-notion-text">{{ currentMonthYear }}</h2>
+              <h2 class="text-xl font-semibold text-theme-text">{{ currentMonthYear }}</h2>
             </div>
             <button
               @click="nextMonth"
-              class="p-2 text-notion-textLight hover:text-notion-text hover:bg-notion-hover rounded transition-colors"
+              class="p-2 text-theme-textLight hover:text-theme-text hover:bg-theme-hover rounded transition-colors"
             >
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -48,25 +48,25 @@
       <!-- Calendar Grid -->
       <div class="card">
         <!-- Day Headers -->
-        <div class="grid grid-cols-7 gap-px bg-notion-border border border-notion-border rounded-t-lg overflow-hidden">
+        <div class="grid grid-cols-7 gap-px bg-theme-border border border-theme-border rounded-t-lg overflow-hidden">
           <div
             v-for="day in dayNames"
             :key="day"
-            class="bg-notion-hover py-2 px-2 text-center text-xs font-semibold text-notion-text"
+            class="bg-theme-hover py-2 px-2 text-center text-xs font-semibold text-theme-text"
           >
             {{ day }}
           </div>
         </div>
 
         <!-- Calendar Days -->
-        <div class="grid grid-cols-7 gap-px bg-notion-border border-x border-b border-notion-border rounded-b-lg overflow-hidden">
+        <div class="grid grid-cols-7 gap-px bg-theme-border border-x border-b border-theme-border rounded-b-lg overflow-hidden">
           <div
             v-for="(day, index) in calendarDays"
             :key="index"
-            class="bg-white min-h-[100px] p-2 cursor-pointer hover:bg-notion-hover transition-colors"
+            class="bg-white min-h-[100px] p-2 cursor-pointer hover:bg-theme-hover transition-colors"
             :class="{
-              'bg-notion-bg': !day.isCurrentMonth,
-              'border-2 border-notion-text': day.isToday
+              'bg-theme-bg': !day.isCurrentMonth,
+              'border-2 border-theme-text': day.isToday
             }"
             @click="openDayView(day.date)"
           >
@@ -74,8 +74,8 @@
               <span
                 class="text-sm font-medium"
                 :class="{
-                  'text-notion-text': day.isCurrentMonth,
-                  'text-notion-textLight': !day.isCurrentMonth,
+                  'text-theme-text': day.isCurrentMonth,
+                  'text-theme-textLight': !day.isCurrentMonth,
                   'text-blue-600 font-semibold': day.isToday
                 }"
               >
@@ -101,26 +101,26 @@
       <div v-if="selectedDate" class="mt-6">
         <div class="card">
           <div class="flex items-center justify-between mb-4">
-            <h3 class="text-lg font-semibold text-notion-text">
+            <h3 class="text-lg font-semibold text-theme-text">
               Events for {{ formatSelectedDate(selectedDate) }}
             </h3>
             <button
               @click="selectedDate = null"
-              class="text-notion-textLight hover:text-notion-text transition-colors"
+              class="text-theme-textLight hover:text-theme-text transition-colors"
             >
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
           </div>
-          <div v-if="getEventsForDay(selectedDate).length === 0" class="text-sm text-notion-textLight py-4">
+          <div v-if="getEventsForDay(selectedDate).length === 0" class="text-sm text-theme-textLight py-4">
             No events scheduled for this day
           </div>
           <div v-else class="space-y-2">
             <div
               v-for="event in getEventsForDay(selectedDate)"
               :key="event.id"
-              class="flex items-start justify-between p-3 rounded border border-notion-border hover:bg-notion-hover transition-colors"
+              class="flex items-start justify-between p-3 rounded border border-theme-border hover:bg-theme-hover transition-colors"
             >
               <div class="flex-1">
                 <div class="flex items-center gap-2 mb-1">
@@ -128,19 +128,19 @@
                     class="w-3 h-3 rounded-full"
                     :class="getEventColorClass(event.color)"
                   ></div>
-                  <h4 class="text-sm font-semibold text-notion-text">{{ event.title }}</h4>
+                  <h4 class="text-sm font-semibold text-theme-text">{{ event.title }}</h4>
                 </div>
-                <p v-if="event.description" class="text-xs text-notion-textLight mt-1">
+                <p v-if="event.description" class="text-xs text-theme-textLight mt-1">
                   {{ event.description }}
                 </p>
-                <p class="text-xs text-notion-textLight mt-1">
+                <p class="text-xs text-theme-textLight mt-1">
                   {{ formatEventTime(event.startTime, event.endTime) }}
                 </p>
               </div>
               <div class="flex items-center gap-2">
                 <button
                   @click="openEditEventModal(event)"
-                  class="p-1.5 text-notion-textLight hover:text-notion-text hover:bg-white rounded transition-colors"
+                  class="p-1.5 text-theme-textLight hover:text-theme-text hover:bg-white rounded transition-colors"
                   title="Edit event"
                 >
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -273,10 +273,10 @@
         size="sm"
       >
         <div class="space-y-4">
-          <p class="text-sm text-notion-text">
+          <p class="text-sm text-theme-text">
             Are you sure you want to delete <strong>{{ eventToDelete?.title }}</strong>?
           </p>
-          <p class="text-sm text-notion-textLight">
+          <p class="text-sm text-theme-textLight">
             This action cannot be undone.
           </p>
         </div>

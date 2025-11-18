@@ -1,5 +1,5 @@
 <template>
-  <nav class="bg-white border-b border-notion-border relative">
+  <nav class="bg-white border-b border-theme-border relative">
     <div class="w-full px-6 lg:px-8">
       <div class="flex justify-between h-14">
         <div class="flex items-center">
@@ -93,7 +93,7 @@
           <div v-if="isAuthenticated" class="flex items-center space-x-3">
             <router-link
               to="/profile"
-              class="text-sm text-notion-textLight hidden sm:inline hover:text-notion-text transition-colors"
+              class="text-sm text-theme-textLight hidden sm:inline hover:text-theme-text transition-colors"
             >
               {{ user?.name || user?.email }}
             </router-link>
@@ -106,7 +106,7 @@
             <!-- Mobile Menu Button -->
             <button
               @click="toggleMobileMenu"
-              class="md:hidden p-2 rounded-md text-notion-text hover:bg-notion-hover focus:outline-none"
+              class="md:hidden p-2 rounded-md text-theme-text hover:bg-theme-hover focus:outline-none"
               aria-label="Toggle menu"
             >
               <svg
@@ -158,7 +158,7 @@
     >
       <div
         v-if="mobileMenuOpen && isAuthenticated"
-        class="md:hidden border-t border-notion-border bg-white"
+        class="md:hidden border-t border-theme-border bg-white"
       >
         <div class="px-6 py-4 space-y-1">
           <router-link
@@ -167,8 +167,8 @@
             class="block px-3 py-2 rounded-md text-sm font-medium transition-colors"
             :class="
               $route.path === '/'
-                ? 'bg-notion-hover text-notion-text'
-                : 'text-notion-textLight hover:bg-notion-hover hover:text-notion-text'
+                ? 'bg-theme-hover text-theme-text'
+                : 'text-theme-textLight hover:bg-theme-hover hover:text-theme-text'
             "
           >
             Home
@@ -179,8 +179,8 @@
             class="block px-3 py-2 rounded-md text-sm font-medium transition-colors"
             :class="
               $route.path === '/dashboard'
-                ? 'bg-notion-hover text-notion-text'
-                : 'text-notion-textLight hover:bg-notion-hover hover:text-notion-text'
+                ? 'bg-theme-hover text-theme-text'
+                : 'text-theme-textLight hover:bg-theme-hover hover:text-theme-text'
             "
           >
             Dashboard
@@ -191,8 +191,8 @@
             class="block px-3 py-2 rounded-md text-sm font-medium transition-colors"
             :class="
               $route.path === '/form'
-                ? 'bg-notion-hover text-notion-text'
-                : 'text-notion-textLight hover:bg-notion-hover hover:text-notion-text'
+                ? 'bg-theme-hover text-theme-text'
+                : 'text-theme-textLight hover:bg-theme-hover hover:text-theme-text'
             "
           >
             Form
@@ -203,8 +203,8 @@
             class="block px-3 py-2 rounded-md text-sm font-medium transition-colors"
             :class="
               $route.path === '/cards'
-                ? 'bg-notion-hover text-notion-text'
-                : 'text-notion-textLight hover:bg-notion-hover hover:text-notion-text'
+                ? 'bg-theme-hover text-theme-text'
+                : 'text-theme-textLight hover:bg-theme-hover hover:text-theme-text'
             "
           >
             Cards
@@ -215,8 +215,8 @@
             class="block px-3 py-2 rounded-md text-sm font-medium transition-colors"
             :class="
               $route.path === '/modals'
-                ? 'bg-notion-hover text-notion-text'
-                : 'text-notion-textLight hover:bg-notion-hover hover:text-notion-text'
+                ? 'bg-theme-hover text-theme-text'
+                : 'text-theme-textLight hover:bg-theme-hover hover:text-theme-text'
             "
           >
             Modals
@@ -227,8 +227,8 @@
             class="block px-3 py-2 rounded-md text-sm font-medium transition-colors"
             :class="
               $route.path === '/navigation'
-                ? 'bg-notion-hover text-notion-text'
-                : 'text-notion-textLight hover:bg-notion-hover hover:text-notion-text'
+                ? 'bg-theme-hover text-theme-text'
+                : 'text-theme-textLight hover:bg-theme-hover hover:text-theme-text'
             "
           >
             Navigation
@@ -239,8 +239,8 @@
             class="block px-3 py-2 rounded-md text-sm font-medium transition-colors"
             :class="
               $route.path === '/users'
-                ? 'bg-notion-hover text-notion-text'
-                : 'text-notion-textLight hover:bg-notion-hover hover:text-notion-text'
+                ? 'bg-theme-hover text-theme-text'
+                : 'text-theme-textLight hover:bg-theme-hover hover:text-theme-text'
             "
           >
             Users
@@ -251,8 +251,8 @@
             class="block px-3 py-2 rounded-md text-sm font-medium transition-colors"
             :class="
               $route.path === '/calendar'
-                ? 'bg-notion-hover text-notion-text'
-                : 'text-notion-textLight hover:bg-notion-hover hover:text-notion-text'
+                ? 'bg-theme-hover text-theme-text'
+                : 'text-theme-textLight hover:bg-theme-hover hover:text-theme-text'
             "
           >
             Calendar
@@ -263,8 +263,8 @@
             class="block px-3 py-2 rounded-md text-sm font-medium transition-colors"
             :class="
               $route.path === '/profile'
-                ? 'bg-notion-hover text-notion-text'
-                : 'text-notion-textLight hover:bg-notion-hover hover:text-notion-text'
+                ? 'bg-theme-hover text-theme-text'
+                : 'text-theme-textLight hover:bg-theme-hover hover:text-theme-text'
             "
           >
             Profile
@@ -275,8 +275,8 @@
             class="block px-3 py-2 rounded-md text-sm font-medium transition-colors"
             :class="
               $route.path === '/subscription'
-                ? 'bg-notion-hover text-notion-text'
-                : 'text-notion-textLight hover:bg-notion-hover hover:text-notion-text'
+                ? 'bg-theme-hover text-theme-text'
+                : 'text-theme-textLight hover:bg-theme-hover hover:text-theme-text'
             "
           >
             Subscription
@@ -287,19 +287,19 @@
             class="block px-3 py-2 rounded-md text-sm font-medium transition-colors"
             :class="
               $route.path === '/copilot'
-                ? 'bg-notion-hover text-notion-text'
-                : 'text-notion-textLight hover:bg-notion-hover hover:text-notion-text'
+                ? 'bg-theme-hover text-theme-text'
+                : 'text-theme-textLight hover:bg-theme-hover hover:text-theme-text'
             "
           >
             Copilot Chat
           </router-link>
-          <div class="border-t border-notion-border mt-2 pt-2">
-            <div class="px-3 py-2 text-sm text-notion-textLight">
+          <div class="border-t border-theme-border mt-2 pt-2">
+            <div class="px-3 py-2 text-sm text-theme-textLight">
               {{ user?.name || user?.email }}
             </div>
             <button
               @click="handleMobileLogout"
-              class="w-full text-left px-3 py-2 rounded-md text-sm font-medium text-notion-textLight hover:bg-notion-hover hover:text-notion-text transition-colors"
+              class="w-full text-left px-3 py-2 rounded-md text-sm font-medium text-theme-textLight hover:bg-theme-hover hover:text-theme-text transition-colors"
             >
               Logout
             </button>

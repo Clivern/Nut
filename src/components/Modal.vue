@@ -12,20 +12,20 @@
         <!-- Modal Container -->
         <div class="flex min-h-full items-center justify-center p-4">
           <div
-            class="relative bg-white rounded-lg border border-notion-border shadow-xl max-w-lg w-full transform transition-all"
+            class="relative bg-white rounded-lg border border-theme-border shadow-xl max-w-lg w-full transform transition-all"
             :class="sizeClasses"
           >
             <!-- Header -->
-            <div v-if="title || $slots.header" class="flex items-center justify-between p-6 border-b border-notion-border">
+            <div v-if="title || $slots.header" class="flex items-center justify-between p-6 border-b border-theme-border">
               <div class="flex-1">
                 <slot name="header">
-                  <h3 class="text-lg font-semibold text-notion-text">{{ title }}</h3>
+                  <h3 class="text-lg font-semibold text-theme-text">{{ title }}</h3>
                 </slot>
               </div>
               <button
                 v-if="showClose"
                 @click="handleClose"
-                class="ml-4 text-notion-textLight hover:text-notion-text transition-colors"
+                class="ml-4 text-theme-textLight hover:text-theme-text transition-colors"
               >
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -39,7 +39,7 @@
             </div>
 
             <!-- Footer -->
-            <div v-if="$slots.footer" class="flex items-center justify-end gap-3 p-6 border-t border-notion-border">
+            <div v-if="$slots.footer" class="flex items-center justify-end gap-3 p-6 border-t border-theme-border">
               <slot name="footer"></slot>
             </div>
           </div>

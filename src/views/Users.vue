@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-notion-bg">
+  <div class="min-h-screen bg-theme-bg">
     <NavBar />
 
     <main class="w-full py-8 px-6 lg:px-8">
@@ -55,33 +55,33 @@
         <div class="overflow-x-auto">
           <table class="w-full">
             <thead>
-              <tr class="border-b border-notion-border">
-                <th class="text-left py-3 px-4 text-sm font-semibold text-notion-text">Name</th>
-                <th class="text-left py-3 px-4 text-sm font-semibold text-notion-text">Email</th>
-                <th class="text-left py-3 px-4 text-sm font-semibold text-notion-text">Role</th>
-                <th class="text-left py-3 px-4 text-sm font-semibold text-notion-text">Status</th>
-                <th class="text-left py-3 px-4 text-sm font-semibold text-notion-text">Created</th>
-                <th class="text-right py-3 px-4 text-sm font-semibold text-notion-text">Actions</th>
+              <tr class="border-b border-theme-border">
+                <th class="text-left py-3 px-4 text-sm font-semibold text-theme-text">Name</th>
+                <th class="text-left py-3 px-4 text-sm font-semibold text-theme-text">Email</th>
+                <th class="text-left py-3 px-4 text-sm font-semibold text-theme-text">Role</th>
+                <th class="text-left py-3 px-4 text-sm font-semibold text-theme-text">Status</th>
+                <th class="text-left py-3 px-4 text-sm font-semibold text-theme-text">Created</th>
+                <th class="text-right py-3 px-4 text-sm font-semibold text-theme-text">Actions</th>
               </tr>
             </thead>
             <tbody>
               <tr
                 v-for="user in paginatedUsers"
                 :key="user.id"
-                class="border-b border-notion-border hover:bg-notion-hover transition-colors"
+                class="border-b border-theme-border hover:bg-theme-hover transition-colors"
               >
                 <td class="py-3 px-4">
                   <div class="flex items-center">
-                    <div class="h-8 w-8 rounded-full bg-notion-text flex items-center justify-center mr-3">
+                    <div class="h-8 w-8 rounded-full bg-theme-text flex items-center justify-center mr-3">
                       <span class="text-white text-xs font-medium">
                         {{ user.name.charAt(0).toUpperCase() }}
                       </span>
                     </div>
-                    <span class="text-sm font-medium text-notion-text">{{ user.name }}</span>
+                    <span class="text-sm font-medium text-theme-text">{{ user.name }}</span>
                   </div>
                 </td>
                 <td class="py-3 px-4">
-                  <span class="text-sm text-notion-textLight">{{ user.email }}</span>
+                  <span class="text-sm text-theme-textLight">{{ user.email }}</span>
                 </td>
                 <td class="py-3 px-4">
                   <span
@@ -100,13 +100,13 @@
                   </span>
                 </td>
                 <td class="py-3 px-4">
-                  <span class="text-sm text-notion-textLight">{{ formatDate(user.createdAt) }}</span>
+                  <span class="text-sm text-theme-textLight">{{ formatDate(user.createdAt) }}</span>
                 </td>
                 <td class="py-3 px-4">
                   <div class="flex items-center justify-end gap-2">
                     <button
                       @click="openEditModal(user)"
-                      class="p-1.5 text-notion-textLight hover:text-notion-text hover:bg-notion-hover rounded transition-colors"
+                      class="p-1.5 text-theme-textLight hover:text-theme-text hover:bg-theme-hover rounded transition-colors"
                       title="Edit user"
                     >
                       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -127,7 +127,7 @@
               </tr>
               <tr v-if="paginatedUsers.length === 0">
                 <td colspan="6" class="py-8 px-4 text-center">
-                  <p class="text-sm text-notion-textLight">No users found</p>
+                  <p class="text-sm text-theme-textLight">No users found</p>
                 </td>
               </tr>
             </tbody>
@@ -135,8 +135,8 @@
         </div>
 
         <!-- Pagination -->
-        <div v-if="filteredUsers.length > 0" class="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-notion-border px-4 py-3">
-          <div class="text-sm text-notion-textLight">
+        <div v-if="filteredUsers.length > 0" class="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-theme-border px-4 py-3">
+          <div class="text-sm text-theme-textLight">
             Showing {{ startIndex + 1 }} to {{ endIndex }} of {{ filteredUsers.length }} users
           </div>
           <div class="flex items-center gap-2">
@@ -150,7 +150,7 @@
               </svg>
               Previous
             </button>
-            <span class="text-sm text-notion-textLight px-2">
+            <span class="text-sm text-theme-textLight px-2">
               Page {{ currentPage }} of {{ totalPages }}
             </span>
             <button
@@ -268,10 +268,10 @@
         size="sm"
       >
         <div class="space-y-4">
-          <p class="text-sm text-notion-text">
+          <p class="text-sm text-theme-text">
             Are you sure you want to delete <strong>{{ userToDelete?.name }}</strong>?
           </p>
-          <p class="text-sm text-notion-textLight">
+          <p class="text-sm text-theme-textLight">
             This action cannot be undone.
           </p>
         </div>

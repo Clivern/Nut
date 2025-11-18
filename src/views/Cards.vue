@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-notion-bg">
+  <div class="min-h-screen bg-theme-bg">
     <NavBar />
 
     <main class="w-full py-8 px-6 lg:px-8">
@@ -10,28 +10,28 @@
 
       <!-- Standard Cards -->
       <div class="mb-8">
-        <h2 class="text-lg font-semibold text-notion-text mb-4">Standard Cards</h2>
+        <h2 class="text-lg font-semibold text-theme-text mb-4">Standard Cards</h2>
         <div class="grid grid-cols-1 gap-3 lg:grid-cols-3">
           <div class="card">
-            <h3 class="text-sm font-semibold text-notion-text mb-2">Card Title</h3>
-            <p class="text-sm text-notion-textLight">This is a standard card with padding and border.</p>
+            <h3 class="text-sm font-semibold text-theme-text mb-2">Card Title</h3>
+            <p class="text-sm text-theme-textLight">This is a standard card with padding and border.</p>
           </div>
 
           <div class="card">
-            <h3 class="text-sm font-semibold text-notion-text mb-2">Another Card</h3>
-            <p class="text-sm text-notion-textLight">Cards can contain any content you need.</p>
+            <h3 class="text-sm font-semibold text-theme-text mb-2">Another Card</h3>
+            <p class="text-sm text-theme-textLight">Cards can contain any content you need.</p>
           </div>
 
           <div class="card">
-            <h3 class="text-sm font-semibold text-notion-text mb-2">Third Card</h3>
-            <p class="text-sm text-notion-textLight">Perfect for displaying related information.</p>
+            <h3 class="text-sm font-semibold text-theme-text mb-2">Third Card</h3>
+            <p class="text-sm text-theme-textLight">Perfect for displaying related information.</p>
           </div>
         </div>
       </div>
 
       <!-- Compact Cards -->
       <div class="mb-8">
-        <h2 class="text-lg font-semibold text-notion-text mb-4">Compact Cards</h2>
+        <h2 class="text-lg font-semibold text-theme-text mb-4">Compact Cards</h2>
         <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
           <div class="card-compact">
             <p class="stat-label">Label</p>
@@ -54,7 +54,7 @@
 
       <!-- Stat Cards -->
       <div class="mb-8">
-        <h2 class="text-lg font-semibold text-notion-text mb-4">Stat Cards</h2>
+        <h2 class="text-lg font-semibold text-theme-text mb-4">Stat Cards</h2>
         <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
           <div class="stat-card">
             <p class="stat-label">Total Requests</p>
@@ -77,25 +77,25 @@
 
       <!-- Section Cards -->
       <div class="mb-8">
-        <h2 class="text-lg font-semibold text-notion-text mb-4">Section Cards</h2>
+        <h2 class="text-lg font-semibold text-theme-text mb-4">Section Cards</h2>
         <div class="grid grid-cols-1 gap-3 lg:grid-cols-2">
           <div class="section">
             <h2 class="section-title">Section Title</h2>
             <div class="section-divider"></div>
-            <p class="text-sm text-notion-textLight">Section content goes here. This style includes a divider below the title.</p>
+            <p class="text-sm text-theme-textLight">Section content goes here. This style includes a divider below the title.</p>
           </div>
 
           <div class="section">
             <h2 class="section-title">Another Section</h2>
             <div class="section-divider"></div>
-            <p class="text-sm text-notion-textLight">Perfect for grouping related settings or information.</p>
+            <p class="text-sm text-theme-textLight">Perfect for grouping related settings or information.</p>
           </div>
         </div>
       </div>
 
       <!-- Alert Cards -->
       <div>
-        <h2 class="text-lg font-semibold text-notion-text mb-4">Alert Messages</h2>
+        <h2 class="text-lg font-semibold text-theme-text mb-4">Alert Messages</h2>
         <div class="space-y-3">
           <div class="alert-success">
             <p class="alert-text-success">This is a success message. Everything worked correctly!</p>

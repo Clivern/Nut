@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-notion-bg">
+  <div class="min-h-screen bg-theme-bg">
     <NavBar />
 
     <main class="w-full py-8 px-6 lg:px-8">
@@ -36,39 +36,39 @@
       <div class="grid grid-cols-1 gap-3 lg:grid-cols-2">
         <!-- Recent Activity -->
         <div class="card">
-          <h3 class="text-sm font-semibold text-notion-text mb-5">Recent Activity</h3>
+          <h3 class="text-sm font-semibold text-theme-text mb-5">Recent Activity</h3>
           <div class="space-y-4">
             <div
               v-for="activity in recentActivities"
               :key="activity.id"
-              class="pb-4 last:pb-0 border-b border-notion-border last:border-0"
+              class="pb-4 last:pb-0 border-b border-theme-border last:border-0"
             >
-              <p class="text-sm font-medium text-notion-text">{{ activity.title }}</p>
-              <p class="text-sm text-notion-textLight mt-1">{{ activity.description }}</p>
-              <p class="text-xs text-notion-textLight mt-1.5">{{ activity.time }}</p>
+              <p class="text-sm font-medium text-theme-text">{{ activity.title }}</p>
+              <p class="text-sm text-theme-textLight mt-1">{{ activity.description }}</p>
+              <p class="text-xs text-theme-textLight mt-1.5">{{ activity.time }}</p>
             </div>
           </div>
         </div>
 
         <!-- System Info -->
         <div class="card">
-          <h3 class="text-sm font-semibold text-notion-text mb-5">System Information</h3>
+          <h3 class="text-sm font-semibold text-theme-text mb-5">System Information</h3>
           <div class="space-y-3">
-            <div class="flex justify-between py-2.5 border-b border-notion-border">
-              <span class="text-sm text-notion-textLight">Version</span>
-              <span class="text-sm font-medium text-notion-text">v0.1.0</span>
+            <div class="flex justify-between py-2.5 border-b border-theme-border">
+              <span class="text-sm text-theme-textLight">Version</span>
+              <span class="text-sm font-medium text-theme-text">v0.1.0</span>
             </div>
-            <div class="flex justify-between py-2.5 border-b border-notion-border">
-              <span class="text-sm text-notion-textLight">Uptime</span>
-              <span class="text-sm font-medium text-notion-text">{{ systemInfo.uptime }}</span>
+            <div class="flex justify-between py-2.5 border-b border-theme-border">
+              <span class="text-sm text-theme-textLight">Uptime</span>
+              <span class="text-sm font-medium text-theme-text">{{ systemInfo.uptime }}</span>
             </div>
-            <div class="flex justify-between py-2.5 border-b border-notion-border">
-              <span class="text-sm text-notion-textLight">Memory Usage</span>
-              <span class="text-sm font-medium text-notion-text">{{ systemInfo.memory }}</span>
+            <div class="flex justify-between py-2.5 border-b border-theme-border">
+              <span class="text-sm text-theme-textLight">Memory Usage</span>
+              <span class="text-sm font-medium text-theme-text">{{ systemInfo.memory }}</span>
             </div>
             <div class="flex justify-between py-2.5">
-              <span class="text-sm text-notion-textLight">CPU Usage</span>
-              <span class="text-sm font-medium text-notion-text">{{ systemInfo.cpu }}</span>
+              <span class="text-sm text-theme-textLight">CPU Usage</span>
+              <span class="text-sm font-medium text-theme-text">{{ systemInfo.cpu }}</span>
             </div>
           </div>
         </div>
@@ -77,7 +77,7 @@
       <!-- Quick Actions -->
       <div class="mt-3">
         <div class="card">
-          <h3 class="text-sm font-semibold text-notion-text mb-4">Quick Actions</h3>
+          <h3 class="text-sm font-semibold text-theme-text mb-4">Quick Actions</h3>
           <div class="flex flex-wrap gap-2">
             <button class="btn-primary">Add Gateway</button>
             <button class="btn-secondary">Configure</button>

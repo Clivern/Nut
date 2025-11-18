@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen flex items-center justify-center bg-notion-bg px-4">
+  <div class="min-h-screen flex items-center justify-center bg-theme-bg px-4">
     <div class="max-w-md w-full">
       <!-- Logo and Header -->
       <div class="text-center mb-10">
@@ -9,10 +9,10 @@
       </div>
 
       <!-- Forgot Password Form -->
-      <div class="bg-white rounded-lg border border-notion-border p-8 shadow-sm">
+      <div class="bg-white rounded-lg border border-theme-border p-8 shadow-sm">
         <div v-if="!emailSent">
-          <h2 class="text-2xl font-semibold text-notion-text mb-2 text-center">Forgot password?</h2>
-          <p class="text-sm text-notion-textLight text-center mb-6">
+          <h2 class="text-2xl font-semibold text-theme-text mb-2 text-center">Forgot password?</h2>
+          <p class="text-sm text-theme-textLight text-center mb-6">
             No worries, we'll send you reset instructions.
           </p>
 
@@ -59,7 +59,7 @@
           <div class="mt-6 text-center">
             <router-link
               to="/login"
-              class="text-sm text-notion-textLight hover:text-notion-text transition-colors flex items-center justify-center"
+              class="text-sm text-theme-textLight hover:text-theme-text transition-colors flex items-center justify-center"
             >
               <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
@@ -77,10 +77,10 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
               </svg>
             </div>
-            <h2 class="text-2xl font-semibold text-notion-text mb-2">Check your email</h2>
-            <p class="text-sm text-notion-textLight">
+            <h2 class="text-2xl font-semibold text-theme-text mb-2">Check your email</h2>
+            <p class="text-sm text-theme-textLight">
               We've sent password reset instructions to
-              <span class="font-medium text-notion-text">{{ form.email }}</span>
+              <span class="font-medium text-theme-text">{{ form.email }}</span>
             </p>
           </div>
 
@@ -102,7 +102,7 @@
       </div>
 
       <!-- Footer -->
-      <p class="text-center text-xs text-notion-textLight mt-8">
+      <p class="text-center text-xs text-theme-textLight mt-8">
         Copyright © 2025 Nut. All rights reserved.
       </p>
     </div>

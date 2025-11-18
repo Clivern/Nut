@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-notion-bg flex flex-col">
+  <div class="min-h-screen bg-theme-bg flex flex-col">
     <NavBar />
 
     <main class="flex-1 flex flex-col w-full py-8 px-6 lg:px-8">
@@ -19,20 +19,20 @@
           <!-- Welcome Message -->
           <div v-if="messages.length === 0" class="flex items-center justify-center h-full">
             <div class="text-center">
-              <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-notion-hover flex items-center justify-center">
-                <svg class="w-8 h-8 text-notion-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-theme-hover flex items-center justify-center">
+                <svg class="w-8 h-8 text-theme-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
                 </svg>
               </div>
-              <h3 class="text-lg font-semibold text-notion-text mb-2">Start a conversation</h3>
-              <p class="text-sm text-notion-textLight mb-6">Ask me anything and I'll help you out!</p>
+              <h3 class="text-lg font-semibold text-theme-text mb-2">Start a conversation</h3>
+              <p class="text-sm text-theme-textLight mb-6">Ask me anything and I'll help you out!</p>
               <!-- Quick Suggestions -->
               <div class="flex flex-wrap gap-2 justify-center">
                 <button
                   v-for="suggestion in quickSuggestions"
                   :key="suggestion"
                   @click="sendMessage(suggestion)"
-                  class="px-4 py-2 bg-notion-hover hover:bg-notion-border text-sm text-notion-text rounded-md transition-colors"
+                  class="px-4 py-2 bg-theme-hover hover:bg-theme-border text-sm text-theme-text rounded-md transition-colors"
                 >
                   {{ suggestion }}
                 </button>
@@ -51,13 +51,13 @@
               class="max-w-[80%] rounded-lg px-4 py-3"
               :class="
                 message.role === 'user'
-                  ? 'bg-notion-text text-white'
-                  : 'bg-notion-hover text-notion-text'
+                  ? 'bg-theme-text text-white'
+                  : 'bg-theme-hover text-theme-text'
               "
             >
               <div class="flex items-start gap-3">
                 <div v-if="message.role === 'assistant'" class="flex-shrink-0 mt-1">
-                  <div class="w-6 h-6 rounded-full bg-notion-text flex items-center justify-center">
+                  <div class="w-6 h-6 rounded-full bg-theme-text flex items-center justify-center">
                     <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
                     </svg>
@@ -80,17 +80,17 @@
 
           <!-- Typing Indicator -->
           <div v-if="isTyping" class="flex justify-start">
-            <div class="max-w-[80%] rounded-lg px-4 py-3 bg-notion-hover text-notion-text">
+            <div class="max-w-[80%] rounded-lg px-4 py-3 bg-theme-hover text-theme-text">
               <div class="flex items-center gap-2">
-                <div class="w-6 h-6 rounded-full bg-notion-text flex items-center justify-center">
+                <div class="w-6 h-6 rounded-full bg-theme-text flex items-center justify-center">
                   <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
                   </svg>
                 </div>
                 <div class="flex gap-1">
-                  <div class="w-2 h-2 bg-notion-text rounded-full animate-bounce" style="animation-delay: 0s"></div>
-                  <div class="w-2 h-2 bg-notion-text rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
-                  <div class="w-2 h-2 bg-notion-text rounded-full animate-bounce" style="animation-delay: 0.4s"></div>
+                  <div class="w-2 h-2 bg-theme-text rounded-full animate-bounce" style="animation-delay: 0s"></div>
+                  <div class="w-2 h-2 bg-theme-text rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+                  <div class="w-2 h-2 bg-theme-text rounded-full animate-bounce" style="animation-delay: 0.4s"></div>
                 </div>
               </div>
             </div>
@@ -98,7 +98,7 @@
         </div>
 
         <!-- Input Area -->
-        <div class="border-t border-notion-border p-4">
+        <div class="border-t border-theme-border p-4">
           <form @submit.prevent="handleSendMessage" class="flex gap-3">
             <div class="flex-1 relative">
               <textarea
@@ -116,7 +116,7 @@
                 type="submit"
                 :disabled="!inputMessage.trim() || isTyping"
                 class="absolute right-2 bottom-2 p-2 rounded-md disabled:opacity-50 disabled:cursor-not-allowed"
-                :class="inputMessage.trim() && !isTyping ? 'text-notion-text hover:bg-notion-hover' : 'text-notion-textLight'"
+                :class="inputMessage.trim() && !isTyping ? 'text-theme-text hover:bg-theme-hover' : 'text-theme-textLight'"
               >
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
@@ -131,7 +131,7 @@
               Send
             </button>
           </form>
-          <p class="text-xs text-notion-textLight mt-2">
+          <p class="text-xs text-theme-textLight mt-2">
             Press Enter to send, Shift+Enter for new line
           </p>
         </div>

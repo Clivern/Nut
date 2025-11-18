@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-notion-bg">
+  <div class="min-h-screen bg-theme-bg">
     <NavBar />
 
     <main class="w-full py-8 px-6 lg:px-8">
@@ -10,7 +10,7 @@
 
       <!-- Basic Modal Examples -->
       <div class="mb-8">
-        <h2 class="text-lg font-semibold text-notion-text mb-4">Basic Modals</h2>
+        <h2 class="text-lg font-semibold text-theme-text mb-4">Basic Modals</h2>
         <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           <button @click="showBasicModal = true" class="btn-primary">
             Basic Modal
@@ -26,7 +26,7 @@
 
       <!-- Form Modal Examples -->
       <div class="mb-8">
-        <h2 class="text-lg font-semibold text-notion-text mb-4">Form Modals</h2>
+        <h2 class="text-lg font-semibold text-theme-text mb-4">Form Modals</h2>
         <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           <button @click="showFormModal = true" class="btn-secondary">
             Form Modal
@@ -39,7 +39,7 @@
 
       <!-- Size Examples -->
       <div class="mb-8">
-        <h2 class="text-lg font-semibold text-notion-text mb-4">Modal Sizes</h2>
+        <h2 class="text-lg font-semibold text-theme-text mb-4">Modal Sizes</h2>
         <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
           <button @click="showSmallModal = true" class="btn-secondary">
             Small Modal
@@ -58,7 +58,7 @@
 
       <!-- Basic Modal -->
       <Modal v-model="showBasicModal" title="Basic Modal">
-        <p class="text-sm text-notion-textLight mb-4">
+        <p class="text-sm text-theme-textLight mb-4">
           This is a basic modal with a title and content. You can add any content here.
         </p>
         <template #footer>
@@ -69,7 +69,7 @@
 
       <!-- Confirmation Modal -->
       <Modal v-model="showConfirmModal" title="Confirm Action">
-        <p class="text-sm text-notion-textLight mb-4">
+        <p class="text-sm text-theme-textLight mb-4">
           Are you sure you want to proceed with this action?
         </p>
         <template #footer>
@@ -89,7 +89,7 @@
             </div>
           </div>
           <div class="ml-4">
-            <p class="text-sm text-notion-textLight">
+            <p class="text-sm text-theme-textLight">
               This is an important alert message. Please review the information carefully.
             </p>
           </div>
@@ -145,10 +145,10 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
             </svg>
           </div>
-          <p class="text-sm text-notion-textLight mb-2">
+          <p class="text-sm text-theme-textLight mb-2">
             Are you sure you want to delete this item?
           </p>
-          <p class="text-xs text-notion-textLight">
+          <p class="text-xs text-theme-textLight">
             This action cannot be undone.
           </p>
         </div>
@@ -160,7 +160,7 @@
 
       <!-- Small Modal -->
       <Modal v-model="showSmallModal" title="Small Modal" size="sm">
-        <p class="text-sm text-notion-textLight">This is a small modal.</p>
+        <p class="text-sm text-theme-textLight">This is a small modal.</p>
         <template #footer>
           <button @click="showSmallModal = false" class="btn-primary w-full">Close</button>
         </template>
@@ -168,7 +168,7 @@
 
       <!-- Medium Modal -->
       <Modal v-model="showMediumModal" title="Medium Modal" size="md">
-        <p class="text-sm text-notion-textLight">This is a medium-sized modal with more content space.</p>
+        <p class="text-sm text-theme-textLight">This is a medium-sized modal with more content space.</p>
         <template #footer>
           <button @click="showMediumModal = false" class="btn-secondary">Cancel</button>
           <button @click="showMediumModal = false" class="btn-primary">OK</button>
@@ -177,11 +177,11 @@
 
       <!-- Large Modal -->
       <Modal v-model="showLargeModal" title="Large Modal" size="lg">
-        <p class="text-sm text-notion-textLight mb-4">
+        <p class="text-sm text-theme-textLight mb-4">
           This is a large modal with even more space for content. Perfect for forms, detailed information, or complex interactions.
         </p>
         <div class="bg-[#F7F6F3] p-4 rounded">
-          <p class="text-xs text-notion-textLight">
+          <p class="text-xs text-theme-textLight">
             You can include any content here, such as forms, tables, or rich media.
           </p>
         </div>
@@ -193,17 +193,17 @@
 
       <!-- X-Large Modal -->
       <Modal v-model="showXLargeModal" title="X-Large Modal" size="xl">
-        <p class="text-sm text-notion-textLight mb-4">
+        <p class="text-sm text-theme-textLight mb-4">
           This is an extra-large modal with maximum space for content. Ideal for complex forms, data tables, or detailed views.
         </p>
         <div class="grid grid-cols-2 gap-4 mb-4">
           <div class="bg-[#F7F6F3] p-4 rounded">
-            <p class="text-xs font-medium text-notion-text mb-2">Column 1</p>
-            <p class="text-xs text-notion-textLight">Content goes here</p>
+            <p class="text-xs font-medium text-theme-text mb-2">Column 1</p>
+            <p class="text-xs text-theme-textLight">Content goes here</p>
           </div>
           <div class="bg-[#F7F6F3] p-4 rounded">
-            <p class="text-xs font-medium text-notion-text mb-2">Column 2</p>
-            <p class="text-xs text-notion-textLight">Content goes here</p>
+            <p class="text-xs font-medium text-theme-text mb-2">Column 2</p>
+            <p class="text-xs text-theme-textLight">Content goes here</p>
           </div>
         </div>
         <template #footer>
@@ -214,12 +214,12 @@
 
       <!-- Usage Documentation -->
       <div class="card">
-        <h3 class="text-sm font-semibold text-notion-text mb-4">Usage</h3>
+        <h3 class="text-sm font-semibold text-theme-text mb-4">Usage</h3>
         <div class="space-y-4">
           <div>
-            <p class="text-sm font-medium text-notion-text mb-2">Basic Usage</p>
+            <p class="text-sm font-medium text-theme-text mb-2">Basic Usage</p>
             <div class="bg-[#F7F6F3] p-4 rounded text-xs overflow-x-auto">
-              <pre class="text-notion-text"><code>&lt;Modal v-model="showModal" title="Modal Title"&gt;
+              <pre class="text-theme-text"><code>&lt;Modal v-model="showModal" title="Modal Title"&gt;
   &lt;p&gt;Modal content&lt;/p&gt;
   &lt;template #footer&gt;
     &lt;button @click="showModal = false"&gt;Close&lt;/button&gt;
@@ -228,8 +228,8 @@
             </div>
           </div>
           <div>
-            <p class="text-sm font-medium text-notion-text mb-2">Props</p>
-            <ul class="text-xs text-notion-textLight space-y-1">
+            <p class="text-sm font-medium text-theme-text mb-2">Props</p>
+            <ul class="text-xs text-theme-textLight space-y-1">
               <li><code class="bg-[#F7F6F3] px-1 rounded">v-model</code> - Boolean to control modal visibility</li>
               <li><code class="bg-[#F7F6F3] px-1 rounded">title</code> - Modal title (optional)</li>
               <li><code class="bg-[#F7F6F3] px-1 rounded">size</code> - Modal size: sm, md, lg, xl (default: md)</li>
@@ -238,8 +238,8 @@
             </ul>
           </div>
           <div>
-            <p class="text-sm font-medium text-notion-text mb-2">Slots</p>
-            <ul class="text-xs text-notion-textLight space-y-1">
+            <p class="text-sm font-medium text-theme-text mb-2">Slots</p>
+            <ul class="text-xs text-theme-textLight space-y-1">
               <li><code class="bg-[#F7F6F3] px-1 rounded">default</code> - Main modal content</li>
               <li><code class="bg-[#F7F6F3] px-1 rounded">header</code> - Custom header content</li>
               <li><code class="bg-[#F7F6F3] px-1 rounded">footer</code> - Footer content (buttons, etc.)</li>

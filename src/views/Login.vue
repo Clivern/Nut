@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen flex items-center justify-center bg-notion-bg px-4">
+  <div class="min-h-screen flex items-center justify-center bg-theme-bg px-4">
     <div class="max-w-md w-full">
       <!-- Logo and Header -->
       <div class="text-center mb-10">
@@ -9,8 +9,8 @@
       </div>
 
       <!-- Login Form -->
-      <div class="bg-white rounded-lg border border-notion-border p-8 shadow-sm">
-        <h2 class="text-2xl font-semibold text-notion-text mb-6 text-center">Welcome back</h2>
+      <div class="bg-white rounded-lg border border-theme-border p-8 shadow-sm">
+        <h2 class="text-2xl font-semibold text-theme-text mb-6 text-center">Welcome back</h2>
         <form class="space-y-5" @submit.prevent="handleLogin">
           <!-- Email Field -->
           <div>
@@ -52,13 +52,13 @@
                 class="checkbox"
                 :disabled="loading"
               >
-              <label for="remember-me" class="ml-2 block text-sm text-notion-textLight cursor-pointer">
+              <label for="remember-me" class="ml-2 block text-sm text-theme-textLight cursor-pointer">
                 Remember me
               </label>
             </div>
             <router-link
               to="/forgot-password"
-              class="text-sm text-notion-textLight hover:text-notion-text transition-colors"
+              class="text-sm text-theme-textLight hover:text-theme-text transition-colors"
             >
               Forgot password?
             </router-link>
@@ -90,11 +90,11 @@
 
         <!-- Sign Up Link -->
         <div class="mt-6 text-center">
-          <p class="text-sm text-notion-textLight">
+          <p class="text-sm text-theme-textLight">
             Don't have an account?
             <router-link
               to="/signup"
-              class="text-notion-text font-medium hover:underline"
+              class="text-theme-text font-medium hover:underline"
             >
               Sign up
             </router-link>
@@ -103,7 +103,7 @@
       </div>
 
       <!-- Footer -->
-      <p class="text-center text-xs text-notion-textLight mt-8">
+      <p class="text-center text-xs text-theme-textLight mt-8">
         Copyright © 2025 Nut. All rights reserved.
       </p>
     </div>

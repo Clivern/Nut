@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-notion-bg">
+  <div class="min-h-screen bg-theme-bg">
     <NavBar />
 
     <main class="w-full py-8 px-6 lg:px-8">
@@ -13,7 +13,7 @@
         <div class="lg:col-span-2 space-y-6">
           <!-- Personal Information -->
           <div class="card">
-            <h3 class="text-lg font-semibold text-notion-text mb-6">Personal Information</h3>
+            <h3 class="text-lg font-semibold text-theme-text mb-6">Personal Information</h3>
             <div class="form-group">
               <div>
                 <label class="form-label">Full Name</label>
@@ -59,7 +59,7 @@
 
           <!-- Security Settings -->
           <div class="card">
-            <h3 class="text-lg font-semibold text-notion-text mb-6">Security</h3>
+            <h3 class="text-lg font-semibold text-theme-text mb-6">Security</h3>
             <div class="form-group">
               <div>
                 <label class="form-label">Current Password</label>
@@ -96,12 +96,12 @@
 
           <!-- Preferences -->
           <div class="card">
-            <h3 class="text-lg font-semibold text-notion-text mb-6">Preferences</h3>
+            <h3 class="text-lg font-semibold text-theme-text mb-6">Preferences</h3>
             <div class="space-y-4">
               <div class="flex items-center justify-between py-2">
                 <div>
-                  <p class="text-sm font-medium text-notion-text">Email Notifications</p>
-                  <p class="text-xs text-notion-textLight mt-1">Receive email updates about your account</p>
+                  <p class="text-sm font-medium text-theme-text">Email Notifications</p>
+                  <p class="text-xs text-theme-textLight mt-1">Receive email updates about your account</p>
                 </div>
                 <label class="relative inline-flex items-center cursor-pointer">
                   <input
@@ -111,10 +111,10 @@
                   />
                 </label>
               </div>
-              <div class="flex items-center justify-between py-2 border-t border-notion-border">
+              <div class="flex items-center justify-between py-2 border-t border-theme-border">
                 <div>
-                  <p class="text-sm font-medium text-notion-text">Marketing Emails</p>
-                  <p class="text-xs text-notion-textLight mt-1">Receive emails about new features and offers</p>
+                  <p class="text-sm font-medium text-theme-text">Marketing Emails</p>
+                  <p class="text-xs text-theme-textLight mt-1">Receive emails about new features and offers</p>
                 </div>
                 <label class="relative inline-flex items-center cursor-pointer">
                   <input
@@ -124,10 +124,10 @@
                   />
                 </label>
               </div>
-              <div class="flex items-center justify-between py-2 border-t border-notion-border">
+              <div class="flex items-center justify-between py-2 border-t border-theme-border">
                 <div>
-                  <p class="text-sm font-medium text-notion-text">Two-Factor Authentication</p>
-                  <p class="text-xs text-notion-textLight mt-1">Add an extra layer of security to your account</p>
+                  <p class="text-sm font-medium text-theme-text">Two-Factor Authentication</p>
+                  <p class="text-xs text-theme-textLight mt-1">Add an extra layer of security to your account</p>
                 </div>
                 <label class="relative inline-flex items-center cursor-pointer">
                   <input
@@ -149,13 +149,13 @@
           <!-- Profile Picture -->
           <div class="card">
             <div class="flex flex-col items-center">
-              <div class="w-24 h-24 rounded-full bg-notion-hover flex items-center justify-center mb-4">
-                <span class="text-3xl font-semibold text-notion-text">
+              <div class="w-24 h-24 rounded-full bg-theme-hover flex items-center justify-center mb-4">
+                <span class="text-3xl font-semibold text-theme-text">
                   {{ profileInitials }}
                 </span>
               </div>
               <button class="btn-secondary text-sm mb-2">Change Photo</button>
-              <p class="text-xs text-notion-textLight text-center">
+              <p class="text-xs text-theme-textLight text-center">
                 JPG, GIF or PNG. Max size of 2MB
               </p>
             </div>
@@ -163,18 +163,18 @@
 
           <!-- Account Stats -->
           <div class="card">
-            <h3 class="text-sm font-semibold text-notion-text mb-4">Account Information</h3>
+            <h3 class="text-sm font-semibold text-theme-text mb-4">Account Information</h3>
             <div class="space-y-3">
-              <div class="flex justify-between py-2 border-b border-notion-border">
-                <span class="text-sm text-notion-textLight">Member Since</span>
-                <span class="text-sm font-medium text-notion-text">{{ accountInfo.memberSince }}</span>
+              <div class="flex justify-between py-2 border-b border-theme-border">
+                <span class="text-sm text-theme-textLight">Member Since</span>
+                <span class="text-sm font-medium text-theme-text">{{ accountInfo.memberSince }}</span>
               </div>
-              <div class="flex justify-between py-2 border-b border-notion-border">
-                <span class="text-sm text-notion-textLight">Last Login</span>
-                <span class="text-sm font-medium text-notion-text">{{ accountInfo.lastLogin }}</span>
+              <div class="flex justify-between py-2 border-b border-theme-border">
+                <span class="text-sm text-theme-textLight">Last Login</span>
+                <span class="text-sm font-medium text-theme-text">{{ accountInfo.lastLogin }}</span>
               </div>
               <div class="flex justify-between py-2">
-                <span class="text-sm text-notion-textLight">Account Status</span>
+                <span class="text-sm text-theme-textLight">Account Status</span>
                 <span class="text-sm font-medium text-green-600">{{ accountInfo.status }}</span>
               </div>
             </div>
@@ -182,7 +182,7 @@
 
           <!-- Quick Actions -->
           <div class="card">
-            <h3 class="text-sm font-semibold text-notion-text mb-4">Quick Actions</h3>
+            <h3 class="text-sm font-semibold text-theme-text mb-4">Quick Actions</h3>
             <div class="space-y-2">
               <router-link to="/subscription" class="btn-secondary w-full text-center block">
                 Manage Subscription

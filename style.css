@@ -42,11 +42,11 @@
 
   /* Navigation Styles */
   .nav-link {
-    @apply text-notion-textLight hover:bg-notion-hover hover:text-notion-text inline-flex items-center px-3 py-1.5 rounded-md text-sm font-medium transition-colors;
+    @apply text-theme-textLight hover:bg-theme-hover hover:text-theme-text inline-flex items-center px-3 py-1.5 rounded-md text-sm font-medium transition-colors;
   }
 
   .nav-link-active {
-    @apply bg-notion-hover text-notion-text inline-flex items-center px-3 py-1.5 rounded-md text-sm font-medium;
+    @apply bg-theme-hover text-theme-text inline-flex items-center px-3 py-1.5 rounded-md text-sm font-medium;
   }
 
   /* Page Header */
@@ -55,37 +55,37 @@
   }
 
   .page-title {
-    @apply text-3xl font-semibold text-notion-text;
+    @apply text-3xl font-semibold text-theme-text;
   }
 
   .page-subtitle {
-    @apply text-sm text-notion-textLight mt-2;
+    @apply text-sm text-theme-textLight mt-2;
   }
 
   /* Stat Card */
   .stat-card {
-    @apply bg-white rounded-lg border border-notion-border p-5 hover:shadow-sm transition-shadow;
+    @apply bg-white rounded-lg border border-theme-border p-5 hover:shadow-sm transition-shadow;
   }
 
   .stat-label {
-    @apply text-xs font-medium text-notion-textLight mb-2 uppercase tracking-wide;
+    @apply text-xs font-medium text-theme-textLight mb-2 uppercase tracking-wide;
   }
 
   .stat-value {
-    @apply text-2xl font-semibold text-notion-text;
+    @apply text-2xl font-semibold text-theme-text;
   }
 
   /* Section Styles */
   .section {
-    @apply bg-white rounded-lg border border-notion-border p-6 shadow-sm;
+    @apply bg-white rounded-lg border border-theme-border p-6 shadow-sm;
   }
 
   .section-title {
-    @apply text-lg font-semibold text-notion-text mb-4;
+    @apply text-lg font-semibold text-theme-text mb-4;
   }
 
   .section-divider {
-    @apply border-b border-notion-border mb-4;
+    @apply border-b border-theme-border mb-4;
   }
 
   /* Alert/Message Styles */
@@ -107,7 +107,7 @@
 
   /* Form Styles */
   .form-label {
-    @apply block text-sm font-medium text-notion-text mb-2;
+    @apply block text-sm font-medium text-theme-text mb-2;
   }
 
   .form-group {
@@ -116,7 +116,7 @@
 
   /* Checkbox Styles */
   .checkbox {
-    @apply h-4 w-4 rounded text-notion-text focus:ring-notion-text border-notion-border;
+    @apply h-4 w-4 rounded text-theme-text focus:ring-theme-text border-theme-border;
   }
 
   /* Loading Spinner */

@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen flex items-center justify-center bg-notion-bg px-4 py-8">
+  <div class="min-h-screen flex items-center justify-center bg-theme-bg px-4 py-8">
     <div class="max-w-md w-full">
       <!-- Logo and Header -->
       <div class="text-center mb-10">
@@ -9,8 +9,8 @@
       </div>
 
       <!-- Signup Form -->
-      <div class="bg-white rounded-lg border border-notion-border p-8 shadow-sm">
-        <h2 class="text-2xl font-semibold text-notion-text mb-6 text-center">Create an account</h2>
+      <div class="bg-white rounded-lg border border-theme-border p-8 shadow-sm">
+        <h2 class="text-2xl font-semibold text-theme-text mb-6 text-center">Create an account</h2>
         <form class="space-y-5" @submit.prevent="handleSignup">
           <!-- Name Field -->
           <div>
@@ -52,7 +52,7 @@
               placeholder="Create a password (min. 8 characters)"
               :disabled="loading"
             >
-            <p class="text-xs text-notion-textLight mt-1">Must be at least 8 characters</p>
+            <p class="text-xs text-theme-textLight mt-1">Must be at least 8 characters</p>
           </div>
 
           <!-- Confirm Password Field -->
@@ -80,10 +80,10 @@
               :disabled="loading"
             >
             <label for="terms" class="ml-3 block">
-              <span class="text-sm text-notion-text">I agree to the</span>
-              <a href="#" class="text-sm text-notion-text font-medium hover:underline">Terms and Conditions</a>
-              <span class="text-sm text-notion-text"> and </span>
-              <a href="#" class="text-sm text-notion-text font-medium hover:underline">Privacy Policy</a>
+              <span class="text-sm text-theme-text">I agree to the</span>
+              <a href="#" class="text-sm text-theme-text font-medium hover:underline">Terms and Conditions</a>
+              <span class="text-sm text-theme-text"> and </span>
+              <a href="#" class="text-sm text-theme-text font-medium hover:underline">Privacy Policy</a>
             </label>
           </div>
 
@@ -113,11 +113,11 @@
 
         <!-- Login Link -->
         <div class="mt-6 text-center">
-          <p class="text-sm text-notion-textLight">
+          <p class="text-sm text-theme-textLight">
             Already have an account?
             <router-link
               to="/login"
-              class="text-notion-text font-medium hover:underline"
+              class="text-theme-text font-medium hover:underline"
             >
               Sign in
             </router-link>
@@ -126,7 +126,7 @@
       </div>
 
       <!-- Footer -->
-      <p class="text-center text-xs text-notion-textLight mt-8">
+      <p class="text-center text-xs text-theme-textLight mt-8">
         Copyright © 2025 Nut. All rights reserved.
       </p>
     </div>

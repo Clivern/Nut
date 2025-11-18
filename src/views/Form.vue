@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-notion-bg">
+  <div class="min-h-screen bg-theme-bg">
     <NavBar />
 
     <main class="w-full py-8 px-6 lg:px-8">
@@ -119,8 +119,8 @@
                 :disabled="loading"
               >
               <label for="useTLS" class="ml-3 block">
-                <span class="text-sm font-medium text-notion-text">Use TLS</span>
-                <p class="text-xs text-notion-textLight mt-1">Enable TLS for secure connection</p>
+                <span class="text-sm font-medium text-theme-text">Use TLS</span>
+                <p class="text-xs text-theme-textLight mt-1">Enable TLS for secure connection</p>
               </label>
             </div>
           </div>
@@ -139,8 +139,8 @@
               :disabled="loading"
             >
             <label for="maintenance" class="ml-3 block">
-              <span class="text-sm font-medium text-notion-text">Enable Maintenance Mode</span>
-              <p class="text-xs text-notion-textLight mt-1">Put the application in maintenance mode</p>
+              <span class="text-sm font-medium text-theme-text">Enable Maintenance Mode</span>
+              <p class="text-xs text-theme-textLight mt-1">Put the application in maintenance mode</p>
             </label>
           </div>
         </div>
