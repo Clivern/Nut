@@ -9,6 +9,7 @@ import Login from '../views/Login.vue'
 import Signup from '../views/Signup.vue'
 import ForgotPassword from '../views/ForgotPassword.vue'
 import Users from '../views/Users.vue'
+import Calendar from '../views/Calendar.vue'
 
 const routes = [
   {
@@ -60,6 +61,11 @@ const routes = [
     path: '/users',
     name: 'Users',
     component: Users
+  },
+  {
+    path: '/calendar',
+    name: 'Calendar',
+    component: Calendar
   }
 ]
 

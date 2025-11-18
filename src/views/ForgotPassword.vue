@@ -4,9 +4,7 @@
       <!-- Logo and Header -->
       <div class="text-center mb-10">
         <div class="flex justify-center mb-8">
-          <div class="h-24 w-24 bg-notion-text rounded-lg flex items-center justify-center">
-            <span class="text-white text-2xl font-bold">Nut</span>
-          </div>
+          <img src="/logo.png" alt="Logo" class="h-24 w-24 object-contain" />
         </div>
       </div>
 

@@ -5,8 +5,7 @@
         <div class="flex items-center">
           <div class="flex-shrink-0 flex items-center">
             <router-link to="/" class="flex items-center">
-              <div class="h-8 w-8 bg-notion-text rounded"></div>
-              <span class="ml-2 text-sm font-semibold text-notion-text">Nut</span>
+              <img src="/logo.png" alt="Logo" class="h-8 w-8 object-contain" />
             </router-link>
           </div>
           <div v-if="isAuthenticated" class="hidden md:ml-8 md:flex md:space-x-1">
@@ -58,6 +57,13 @@
               :class="{ 'nav-link-active': $route.path === '/users' }"
             >
               Users
+            </router-link>
+            <router-link
+              to="/calendar"
+              class="nav-link"
+              :class="{ 'nav-link-active': $route.path === '/calendar' }"
+            >
+              Calendar
             </router-link>
           </div>
         </div>

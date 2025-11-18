@@ -66,7 +66,7 @@
             </thead>
             <tbody>
               <tr
-                v-for="user in filteredUsers"
+                v-for="user in paginatedUsers"
                 :key="user.id"
                 class="border-b border-notion-border hover:bg-notion-hover transition-colors"
               >
@@ -125,7 +125,7 @@
                   </div>
                 </td>
               </tr>
-              <tr v-if="filteredUsers.length === 0">
+              <tr v-if="paginatedUsers.length === 0">
                 <td colspan="6" class="py-8 px-4 text-center">
                   <p class="text-sm text-notion-textLight">No users found</p>
                 </td>
@@ -135,9 +135,34 @@
         </div>
 
         <!-- Pagination -->
-        <div v-if="filteredUsers.length > 0" class="flex items-center justify-between border-t border-notion-border px-4 py-3">
+        <div v-if="filteredUsers.length > 0" class="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-notion-border px-4 py-3">
           <div class="text-sm text-notion-textLight">
-            Showing {{ filteredUsers.length }} of {{ users.length }} users
+            Showing {{ startIndex + 1 }} to {{ endIndex }} of {{ filteredUsers.length }} users
+          </div>
+          <div class="flex items-center gap-2">
+            <button
+              @click="previousPage"
+              :disabled="currentPage === 1"
+              class="btn-secondary disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+              </svg>
+              Previous
+            </button>
+            <span class="text-sm text-notion-textLight px-2">
+              Page {{ currentPage }} of {{ totalPages }}
+            </span>
+            <button
+              @click="nextPage"
+              :disabled="currentPage === totalPages"
+              class="btn-secondary disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              Next
+              <svg class="w-4 h-4 inline ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
           </div>
         </div>
       </div>
@@ -272,7 +297,7 @@
 </template>
 
 <script setup>
-import { ref, computed, reactive, onMounted } from 'vue'
+import { ref, computed, reactive, onMounted, watch } from 'vue'
 import NavBar from '../components/NavBar.vue'
 import Modal from '../components/Modal.vue'
 
@@ -287,6 +312,10 @@ const saving = ref(false)
 const deleting = ref(false)
 const error = ref(null)
 const userToDelete = ref(null)
+
+// Pagination state
+const currentPage = ref(1)
+const itemsPerPage = ref(10)
 
 const userForm = reactive({
   id: null,
@@ -318,6 +347,27 @@ const filteredUsers = computed(() => {
   return result
 })
 
+const totalPages = computed(() => {
+  return Math.ceil(filteredUsers.value.length / itemsPerPage.value)
+})
+
+const startIndex = computed(() => {
+  return (currentPage.value - 1) * itemsPerPage.value
+})
+
+const endIndex = computed(() => {
+  return Math.min(startIndex.value + itemsPerPage.value, filteredUsers.value.length)
+})
+
+const paginatedUsers = computed(() => {
+  return filteredUsers.value.slice(startIndex.value, endIndex.value)
+})
+
+// Watch for filter changes and reset to page 1
+watch([searchQuery, roleFilter], () => {
+  currentPage.value = 1
+})
+
 // Methods
 const getRoleBadgeClass = (role) => {
   const classes = {
@@ -336,6 +386,18 @@ const formatDate = (dateString) => {
     month: 'short',
     day: 'numeric'
   })
+}
+
+const nextPage = () => {
+  if (currentPage.value < totalPages.value) {
+    currentPage.value++
+  }
+}
+
+const previousPage = () => {
+  if (currentPage.value > 1) {
+    currentPage.value--
+  }
 }
 
 const openAddModal = () => {
@@ -407,6 +469,11 @@ const saveUser = async () => {
     // Save to localStorage
     localStorage.setItem('users', JSON.stringify(users.value))
 
+    // Reset to first page if needed
+    if (currentPage.value > totalPages.value) {
+      currentPage.value = totalPages.value || 1
+    }
+
     showUserModal.value = false
     resetForm()
   } catch (err) {
@@ -429,6 +496,11 @@ const confirmDelete = async () => {
 
     // Save to localStorage
     localStorage.setItem('users', JSON.stringify(users.value))
+
+    // Reset to first page if current page is empty
+    if (paginatedUsers.value.length === 0 && currentPage.value > 1) {
+      currentPage.value = Math.max(1, currentPage.value - 1)
+    }
 
     showDeleteModal.value = false
     userToDelete.value = null
