@@ -20,14 +20,18 @@ jobs:
         node-version: '20.x'
         cache: 'npm'
 
-    - name: Verify Node.js version
-      run: node --version
+    - name: Show environment info
+      run: make version
+
+    - name: Clean previous builds
+      run: make clean-build
+      continue-on-error: true
 
     - name: Install dependencies
-      run: npm ci
+      run: make ci-install
 
     - name: Build project
-      run: npm run build
+      run: make build
 
     - name: Check build output
       run: |
@@ -45,10 +49,18 @@ jobs:
         path: dist/
         retention-days: 30
 
+    - name: Project info
+      run: make info
+
     - name: Build summary
       run: |
         echo "## Build Summary" >> $GITHUB_STEP_SUMMARY
         echo "- ✅ Build completed successfully" >> $GITHUB_STEP_SUMMARY
         echo "- 📦 Artifacts uploaded" >> $GITHUB_STEP_SUMMARY
         echo "- 🗂️ Build output: \`dist/\`" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### Commands Used" >> $GITHUB_STEP_SUMMARY
+        echo "- \`make ci-install\` - Installed dependencies (CI mode)" >> $GITHUB_STEP_SUMMARY
+        echo "- \`make build\` - Built project for production" >> $GITHUB_STEP_SUMMARY
+        echo "- \`make clean-build\` - Cleaned previous build artifacts" >> $GITHUB_STEP_SUMMARY
 

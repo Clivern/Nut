@@ -24,11 +24,14 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
 
+    - name: Show environment info
+      run: make version
+
     - name: Install dependencies
-      run: npm ci
+      run: make ci-install
 
     - name: Build project
-      run: npm run build
+      run: make build
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
@@ -51,9 +54,13 @@ jobs:
         cache: 'npm'
 
     - name: Install dependencies
-      run: npm ci
+      run: make ci-install
+
+    - name: Security audit
+      run: make audit
+      continue-on-error: true
 
     - name: Check build (lint)
-      run: npm run build
+      run: make build
       continue-on-error: false
 
