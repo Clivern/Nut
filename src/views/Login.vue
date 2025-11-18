@@ -22,6 +22,7 @@
               v-model="form.email"
               type="email"
               required
+              autocomplete="email"
               class="input-field"
               placeholder="Enter your email"
               :disabled="loading"
@@ -36,6 +37,7 @@
               v-model="form.password"
               type="password"
               required
+              autocomplete="current-password"
               class="input-field"
               placeholder="Enter your password"
               :disabled="loading"
@@ -52,7 +54,7 @@
                 class="checkbox"
                 :disabled="loading"
               >
-              <label for="remember-me" class="ml-2 block text-sm text-notion-textLight">
+              <label for="remember-me" class="ml-2 block text-sm text-notion-textLight cursor-pointer">
                 Remember me
               </label>
             </div>
@@ -74,7 +76,7 @@
             <button
               type="submit"
               class="w-full btn-primary py-2.5 disabled:opacity-50 disabled:cursor-not-allowed"
-              :disabled="loading"
+              :disabled="loading || !form.email || !form.password"
             >
               <span v-if="!loading">Sign in</span>
               <span v-else class="flex items-center justify-center">
@@ -111,7 +113,7 @@
 </template>
 
 <script setup>
-import { reactive, computed, onMounted } from 'vue'
+import { reactive, ref, watch, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '../stores/auth'
 
@@ -124,15 +126,36 @@ const form = reactive({
   rememberMe: false
 })
 
-const loading = computed(() => authStore.loading)
-const error = computed(() => authStore.error)
+// Use local refs that sync with store
+const loading = ref(false)
+const error = ref(null)
+
+// Sync with store state
+watch(() => authStore.loading, (newVal) => {
+  loading.value = newVal
+}, { immediate: true })
+
+watch(() => authStore.error, (newVal) => {
+  error.value = newVal
+}, { immediate: true })
 
 // Reset state when component mounts
 onMounted(() => {
+  // Force reset loading state
+  loading.value = false
+  error.value = null
+  authStore.reset()
+  authStore.resetLoading()
+})
+
+// Reset loading state when component unmounts
+onUnmounted(() => {
   authStore.reset()
 })
 
 const handleLogin = async () => {
+  if (loading.value) return // Prevent double submission
+
   try {
     const result = await authStore.login(form.email, form.password, form.rememberMe)
     if (result.success) {
@@ -142,6 +165,7 @@ const handleLogin = async () => {
   } catch (err) {
     console.error('Login error:', err)
     authStore.resetLoading()
+    loading.value = false
   }
 }
 </script>

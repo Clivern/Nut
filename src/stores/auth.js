@@ -6,7 +6,15 @@ const user = ref(null)
 const loading = ref(false)
 const error = ref(null)
 
+// Create a singleton store instance
+let storeInstance = null
+
 export function useAuthStore() {
+  // Return singleton instance if it exists
+  if (storeInstance) {
+    return storeInstance
+  }
+
   const login = async (email, password, rememberMe = false) => {
     loading.value = true
     error.value = null
@@ -28,16 +36,17 @@ export function useAuthStore() {
           localStorage.setItem('user', JSON.stringify(user.value))
         }
 
+        loading.value = false
         return { success: true }
       } else {
         error.value = 'Email and password are required'
+        loading.value = false
         return { success: false }
       }
     } catch (err) {
       error.value = err.message || 'Login failed. Please try again.'
-      return { success: false }
-    } finally {
       loading.value = false
+      return { success: false }
     }
   }
 
@@ -52,16 +61,19 @@ export function useAuthStore() {
       // Mock validation
       if (!name || !email || !password) {
         error.value = 'All fields are required'
+        loading.value = false
         return { success: false }
       }
 
       if (password !== confirmPassword) {
         error.value = 'Passwords do not match'
+        loading.value = false
         return { success: false }
       }
 
       if (password.length < 8) {
         error.value = 'Password must be at least 8 characters'
+        loading.value = false
         return { success: false }
       }
 
@@ -75,12 +87,12 @@ export function useAuthStore() {
       localStorage.setItem('auth_token', 'mock_token')
       localStorage.setItem('user', JSON.stringify(user.value))
 
+      loading.value = false
       return { success: true }
     } catch (err) {
       error.value = err.message || 'Signup failed. Please try again.'
-      return { success: false }
-    } finally {
       loading.value = false
+      return { success: false }
     }
   }
 
@@ -102,16 +114,17 @@ export function useAuthStore() {
 
       if (!email) {
         error.value = 'Email is required'
+        loading.value = false
         return { success: false }
       }
 
       // Mock successful password reset
+      loading.value = false
       return { success: true }
     } catch (err) {
       error.value = err.message || 'Failed to send reset email. Please try again.'
-      return { success: false }
-    } finally {
       loading.value = false
+      return { success: false }
     }
   }
 
@@ -138,10 +151,12 @@ export function useAuthStore() {
     error.value = null
   }
 
-  // Check auth on initialization
-  checkAuth()
+  // Ensure loading is false on initialization
+  loading.value = false
+  error.value = null
 
-  return {
+  // Create and store singleton instance
+  storeInstance = {
     isAuthenticated: computed(() => isAuthenticated.value),
     user: computed(() => user.value),
     loading: computed(() => loading.value),
@@ -155,5 +170,10 @@ export function useAuthStore() {
     resetLoading,
     reset
   }
+
+  // Check auth on first initialization
+  checkAuth()
+
+  return storeInstance
 }
 

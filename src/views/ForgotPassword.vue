@@ -43,7 +43,7 @@
               <button
                 type="submit"
                 class="w-full btn-primary py-2.5 disabled:opacity-50 disabled:cursor-not-allowed"
-                :disabled="loading"
+                :disabled="loading || !form.email"
               >
                 <span v-if="!loading">Reset password</span>
                 <span v-else class="flex items-center justify-center">
@@ -112,7 +112,7 @@
 </template>
 
 <script setup>
-import { reactive, ref, computed, onMounted } from 'vue'
+import { reactive, ref, watch, onMounted, onUnmounted } from 'vue'
 import { useAuthStore } from '../stores/auth'
 
 const authStore = useAuthStore()
@@ -122,19 +122,48 @@ const form = reactive({
 })
 
 const emailSent = ref(false)
-const loading = computed(() => authStore.loading)
-const error = computed(() => authStore.error)
+
+// Use local refs that sync with store
+const loading = ref(false)
+const error = ref(null)
+
+// Sync with store state
+watch(() => authStore.loading, (newVal) => {
+  loading.value = newVal
+}, { immediate: true })
+
+watch(() => authStore.error, (newVal) => {
+  error.value = newVal
+}, { immediate: true })
 
 // Reset state when component mounts
 onMounted(() => {
-  authStore.reset()
+  // Force reset loading state
+  loading.value = false
+  error.value = null
   emailSent.value = false
+  authStore.reset()
+  authStore.resetLoading()
+})
+
+// Reset loading state when component unmounts
+onUnmounted(() => {
+  authStore.reset()
 })
 
 const handleResetPassword = async () => {
-  const result = await authStore.resetPassword(form.email)
-  if (result.success) {
-    emailSent.value = true
+  if (loading.value) return // Prevent double submission
+
+  try {
+    const result = await authStore.resetPassword(form.email)
+    if (result.success) {
+      emailSent.value = true
+      loading.value = false
+    }
+  } catch (err) {
+    console.error('Reset password error:', err)
+    authStore.resetLoading()
+    loading.value = false
   }
 }
 </script>
