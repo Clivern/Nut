@@ -52,6 +52,13 @@
             >
               Navigation
             </router-link>
+            <router-link
+              to="/users"
+              class="nav-link"
+              :class="{ 'nav-link-active': $route.path === '/users' }"
+            >
+              Users
+            </router-link>
           </div>
         </div>
         <div class="flex items-center">
