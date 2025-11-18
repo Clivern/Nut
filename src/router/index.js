@@ -12,6 +12,7 @@ import Users from '../views/Users.vue'
 import Calendar from '../views/Calendar.vue'
 import Profile from '../views/Profile.vue'
 import Subscription from '../views/Subscription.vue'
+import CopilotChat from '../views/CopilotChat.vue'
 
 const routes = [
   {
@@ -78,6 +79,11 @@ const routes = [
     path: '/subscription',
     name: 'Subscription',
     component: Subscription
+  },
+  {
+    path: '/copilot',
+    name: 'CopilotChat',
+    component: CopilotChat
   }
 ]
 
