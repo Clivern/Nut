@@ -80,10 +80,10 @@
               :disabled="loading"
             >
             <label for="terms" class="ml-3 block">
-              <span class="text-sm text-theme-text">I agree to the</span>
-              <a href="#" class="text-sm text-theme-text font-medium hover:underline">Terms and Conditions</a>
+              <span class="text-sm text-theme-text">I agree to the </span>
+              <router-link to="/terms" class="text-sm text-theme-text font-medium hover:underline" target="_blank">Terms and Conditions</router-link>
               <span class="text-sm text-theme-text"> and </span>
-              <a href="#" class="text-sm text-theme-text font-medium hover:underline">Privacy Policy</a>
+              <router-link to="/privacy" class="text-sm text-theme-text font-medium hover:underline" target="_blank">Privacy Policy</router-link>
             </label>
           </div>
 

@@ -8,6 +8,12 @@ import Modals from '../views/Modals.vue'
 import Login from '../views/Login.vue'
 import Signup from '../views/Signup.vue'
 import ForgotPassword from '../views/ForgotPassword.vue'
+import ResetPassword from '../views/ResetPassword.vue'
+import VerifyEmail from '../views/VerifyEmail.vue'
+import TermsOfUse from '../views/TermsOfUse.vue'
+import PrivacyPolicy from '../views/PrivacyPolicy.vue'
+import NotFound from '../views/NotFound.vue'
+import ServerError from '../views/ServerError.vue'
 import Users from '../views/Users.vue'
 import Calendar from '../views/Calendar.vue'
 import Profile from '../views/Profile.vue'
@@ -34,6 +40,26 @@ const routes = [
     path: '/forgot-password',
     name: 'ForgotPassword',
     component: ForgotPassword
+  },
+  {
+    path: '/reset-password/:email?/:token?',
+    name: 'ResetPassword',
+    component: ResetPassword
+  },
+  {
+    path: '/verify-email/:email/:token',
+    name: 'VerifyEmail',
+    component: VerifyEmail
+  },
+  {
+    path: '/terms',
+    name: 'TermsOfUse',
+    component: TermsOfUse
+  },
+  {
+    path: '/privacy',
+    name: 'PrivacyPolicy',
+    component: PrivacyPolicy
   },
   {
     path: '/dashboard',
@@ -84,6 +110,16 @@ const routes = [
     path: '/copilot',
     name: 'CopilotChat',
     component: CopilotChat
+  },
+  {
+    path: '/500',
+    name: 'ServerError',
+    component: ServerError
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    component: NotFound
   }
 ]
 

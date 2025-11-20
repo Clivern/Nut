@@ -82,11 +82,31 @@
         <!-- Public examples -->
         <div class="card">
           <h3 class="text-sm font-semibold text-theme-text mb-2">Authentication</h3>
-          <p class="text-sm text-theme-textLight mb-3">Login, signup, and password reset pages</p>
-          <div class="flex gap-2">
+          <p class="text-sm text-theme-textLight mb-3">Login, signup, password reset, and email verification pages</p>
+          <div class="flex flex-wrap gap-2">
             <router-link to="/login" class="btn-secondary text-xs">Login</router-link>
             <router-link to="/signup" class="btn-secondary text-xs">Signup</router-link>
             <router-link to="/forgot-password" class="btn-secondary text-xs">Reset</router-link>
+            <router-link to="/reset-password" class="btn-secondary text-xs">New Password</router-link>
+            <router-link to="/verify-email/test@example.com/token123" class="btn-secondary text-xs">Verify Email</router-link>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 class="text-sm font-semibold text-theme-text mb-2">Legal Pages</h3>
+          <p class="text-sm text-theme-textLight mb-3">Terms of use and privacy policy templates</p>
+          <div class="flex flex-wrap gap-2">
+            <router-link to="/terms" class="btn-secondary text-xs">Terms</router-link>
+            <router-link to="/privacy" class="btn-secondary text-xs">Privacy</router-link>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 class="text-sm font-semibold text-theme-text mb-2">Error Pages</h3>
+          <p class="text-sm text-theme-textLight mb-3">404 and 500 error page templates</p>
+          <div class="flex flex-wrap gap-2">
+            <router-link to="/404" class="btn-secondary text-xs">404</router-link>
+            <router-link to="/500" class="btn-secondary text-xs">500</router-link>
           </div>
         </div>
       </div>
