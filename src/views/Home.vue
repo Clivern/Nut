@@ -93,6 +93,15 @@
         </div>
 
         <div class="card">
+          <h3 class="text-sm font-semibold text-theme-text mb-2">Workspaces</h3>
+          <p class="text-sm text-theme-textLight mb-3">Select an existing workspace or create a new one after sign-in</p>
+          <div class="flex flex-wrap gap-2">
+            <router-link to="/select-workspace" class="btn-secondary text-xs">Select</router-link>
+            <router-link to="/create-workspace" class="btn-secondary text-xs">Create</router-link>
+          </div>
+        </div>
+
+        <div class="card">
           <h3 class="text-sm font-semibold text-theme-text mb-2">Error Pages</h3>
           <p class="text-sm text-theme-textLight mb-3">404 and 500 error page templates</p>
           <div class="flex flex-wrap gap-2">

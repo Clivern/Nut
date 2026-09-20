@@ -21,6 +21,8 @@ import Subscription from '../views/Subscription.vue'
 import CopilotChat from '../views/CopilotChat.vue'
 import Themes from '../views/Themes.vue'
 import Empty from '../views/Empty.vue'
+import SelectWorkspace from '../views/SelectWorkspace.vue'
+import CreateWorkspace from '../views/CreateWorkspace.vue'
 
 const routes = [
   {
@@ -122,6 +124,16 @@ const routes = [
     path: '/empty',
     name: 'Empty',
     component: Empty
+  },
+  {
+    path: '/select-workspace',
+    name: 'SelectWorkspace',
+    component: SelectWorkspace
+  },
+  {
+    path: '/create-workspace',
+    name: 'CreateWorkspace',
+    component: CreateWorkspace
   },
   {
     path: '/500',

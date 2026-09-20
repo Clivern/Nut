@@ -72,13 +72,31 @@
                   {{ item.label }}
                 </router-link>
               </div>
-              <div class="border-b border-theme-border px-4 py-3">
+              <div v-if="user?.name || user?.email" class="border-b border-theme-border px-4 py-3">
                 <p v-if="user?.name" class="text-sm font-semibold text-theme-text truncate">
                   {{ user.name }}
                 </p>
-                <p class="text-sm truncate" :class="user?.name ? 'text-theme-textLight' : 'text-theme-text'">
-                  {{ user?.email ?? '' }}
+                <p v-if="user?.email" class="text-sm truncate" :class="user?.name ? 'text-theme-textLight' : 'text-theme-text'">
+                  {{ user.email }}
                 </p>
+              </div>
+              <div class="border-b border-theme-border py-1">
+                <router-link
+                  to="/select-workspace"
+                  class="block px-4 py-2 text-sm text-theme-text hover:bg-theme-hover"
+                  role="menuitem"
+                  @click="open = false"
+                >
+                  Select Workspace
+                </router-link>
+                <router-link
+                  to="/create-workspace"
+                  class="block px-4 py-2 text-sm text-theme-text hover:bg-theme-hover"
+                  role="menuitem"
+                  @click="open = false"
+                >
+                  Create Workspace
+                </router-link>
               </div>
               <div class="py-1">
                 <router-link
