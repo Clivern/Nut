@@ -2,10 +2,10 @@
   <div class="min-h-screen bg-theme-bg">
     <NavBar />
 
-    <main class="w-full py-8 px-6 lg:px-8">
+    <main class="w-full px-4 sm:px-6 lg:px-8 py-8">
       <div class="page-header">
         <h1 class="page-title">Nut Style Guide</h1>
-        <p class="page-subtitle">A reusable dashboard style guide with Vue.js components</p>
+        <p class="page-subtitle">A reusable dashboard kit with Vue 3, Tailwind 4, and CSS variable themes</p>
       </div>
 
       <!-- Welcome message for authenticated users -->
@@ -19,7 +19,7 @@
 
       <!-- Call to action for unauthenticated users -->
       <div v-else class="mb-6">
-        <div class="card bg-gradient-to-r from-theme-bg to-white">
+        <div class="card bg-gradient-to-r from-theme-bg to-theme-surface">
           <div class="flex flex-col sm:flex-row items-center justify-between">
             <div>
               <h3 class="text-lg font-semibold text-theme-text mb-2">Get Started</h3>
@@ -93,6 +93,15 @@
         </div>
 
         <div class="card">
+          <h3 class="text-sm font-semibold text-theme-text mb-2">Error Pages</h3>
+          <p class="text-sm text-theme-textLight mb-3">404 and 500 error page templates</p>
+          <div class="flex flex-wrap gap-2">
+            <router-link to="/404" class="btn-secondary text-xs">404</router-link>
+            <router-link to="/500" class="btn-secondary text-xs">500</router-link>
+          </div>
+        </div>
+
+        <div class="card">
           <h3 class="text-sm font-semibold text-theme-text mb-2">Legal Pages</h3>
           <p class="text-sm text-theme-textLight mb-3">Terms of use and privacy policy templates</p>
           <div class="flex flex-wrap gap-2">
@@ -102,12 +111,24 @@
         </div>
 
         <div class="card">
-          <h3 class="text-sm font-semibold text-theme-text mb-2">Error Pages</h3>
-          <p class="text-sm text-theme-textLight mb-3">404 and 500 error page templates</p>
+          <h3 class="text-sm font-semibold text-theme-text mb-2">Themes</h3>
+          <p class="text-sm text-theme-textLight mb-3">Default, blue, slate, emerald, and dark tokens</p>
+          <router-link to="/themes" class="btn-secondary text-xs">Open themes</router-link>
+        </div>
+
+        <div class="card">
+          <h3 class="text-sm font-semibold text-theme-text mb-2">Empty &amp; flash</h3>
+          <p class="text-sm text-theme-textLight mb-3">Empty states and toast confirmations used across product dashboards</p>
           <div class="flex flex-wrap gap-2">
-            <router-link to="/404" class="btn-secondary text-xs">404</router-link>
-            <router-link to="/500" class="btn-secondary text-xs">500</router-link>
+            <router-link to="/empty" class="btn-secondary text-xs">Empty page</router-link>
+            <button type="button" class="btn-secondary text-xs" @click="showFlash('Saved')">Show flash</button>
           </div>
+        </div>
+
+        <div class="card">
+          <h3 class="text-sm font-semibold text-theme-text mb-2">Cookie banner</h3>
+          <p class="text-sm text-theme-textLight mb-3">Consent bar and preferences modal</p>
+          <button type="button" class="btn-secondary text-xs" @click="resetCookies">Show cookie banner</button>
         </div>
       </div>
 
@@ -117,7 +138,7 @@
           <p class="text-sm text-theme-textLight">
             Nut provides a comprehensive set of Vue.js components and styles for building modern dashboard applications.
           </p>
-          <div class="bg-[#F7F6F3] p-4 rounded text-xs overflow-x-auto">
+          <div class="code-block">
             <code class="text-theme-text">
               npm install<br>
               npm run dev
@@ -131,11 +152,17 @@
 
 <script setup>
 import { computed } from 'vue'
-import NavBar from '../components/NavBar.vue'
-import { useAuthStore } from '../stores/auth'
+import NavBar from '@/components/NavBar.vue'
+import { useAuthStore } from '@/stores/auth'
+import { showFlash } from '@/lib/flash'
+import { resetCookieConsent } from '@/lib/cookies'
 
 const authStore = useAuthStore()
 const isAuthenticated = computed(() => authStore.isAuthenticated)
 const user = computed(() => authStore.user)
+
+function resetCookies() {
+  resetCookieConsent()
+}
 </script>
 

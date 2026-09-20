@@ -1,6 +1,6 @@
 {
   "name": "nut",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "description": "A modern, reusable dashboard style guide built with Vue.js 3",
   "type": "module",
   "scripts": {
@@ -9,14 +9,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.4.21",
-    "vue-router": "^4.3.0"
+    "vue": "^3.5.42",
+    "vue-router": "^5.3.1"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^6.0.0",
-    "autoprefixer": "^10.4.22",
-    "postcss": "^8.5.6",
-    "tailwindcss": "^3.4.18",
-    "vite": "^7.0.0"
+    "@tailwindcss/vite": "^4.3.3",
+    "@vitejs/plugin-vue": "^6.0.9",
+    "tailwindcss": "^4.3.3",
+    "vite": "^8.3.0"
   }
 }

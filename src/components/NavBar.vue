@@ -1,350 +1,174 @@
 <template>
-  <nav class="bg-white border-b border-theme-border relative">
-    <div class="w-full px-6 lg:px-8">
+  <nav class="bg-white border-b border-theme-border">
+    <div class="w-full px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between h-14">
-        <div class="flex items-center">
-          <div class="flex-shrink-0 flex items-center">
+        <div class="flex items-center min-w-0">
+          <div class="shrink-0 flex items-center">
             <router-link to="/" class="flex items-center">
-              <img src="/logo.png" alt="Logo" class="h-8 w-8 object-contain" />
+              <img src="/logo.png" alt="Nut" class="h-8 w-8 object-contain" />
             </router-link>
           </div>
-          <!-- Desktop Navigation -->
-          <div v-if="isAuthenticated" class="hidden md:ml-8 md:flex md:space-x-1">
+          <div v-if="isAuthenticated" class="hidden lg:ml-8 lg:flex lg:space-x-1">
             <router-link
-              to="/"
-              class="nav-link"
-              :class="{ 'nav-link-active': $route.path === '/' }"
+              v-for="item in navItems"
+              :key="item.to"
+              :to="item.to"
+              :class="[isActive(item.to) ? 'nav-link-active' : 'nav-link']"
             >
-              Home
-            </router-link>
-            <router-link
-              to="/dashboard"
-              class="nav-link"
-              :class="{ 'nav-link-active': $route.path === '/dashboard' }"
-            >
-              Dashboard
-            </router-link>
-            <router-link
-              to="/form"
-              class="nav-link"
-              :class="{ 'nav-link-active': $route.path === '/form' }"
-            >
-              Form
-            </router-link>
-            <router-link
-              to="/cards"
-              class="nav-link"
-              :class="{ 'nav-link-active': $route.path === '/cards' }"
-            >
-              Cards
-            </router-link>
-            <router-link
-              to="/modals"
-              class="nav-link"
-              :class="{ 'nav-link-active': $route.path === '/modals' }"
-            >
-              Modals
-            </router-link>
-            <router-link
-              to="/navigation"
-              class="nav-link"
-              :class="{ 'nav-link-active': $route.path === '/navigation' }"
-            >
-              Navigation
-            </router-link>
-            <router-link
-              to="/users"
-              class="nav-link"
-              :class="{ 'nav-link-active': $route.path === '/users' }"
-            >
-              Users
-            </router-link>
-            <router-link
-              to="/calendar"
-              class="nav-link"
-              :class="{ 'nav-link-active': $route.path === '/calendar' }"
-            >
-              Calendar
-            </router-link>
-            <router-link
-              to="/profile"
-              class="nav-link"
-              :class="{ 'nav-link-active': $route.path === '/profile' }"
-            >
-              Profile
-            </router-link>
-            <router-link
-              to="/subscription"
-              class="nav-link"
-              :class="{ 'nav-link-active': $route.path === '/subscription' }"
-            >
-              Subscription
-            </router-link>
-            <router-link
-              to="/copilot"
-              class="nav-link"
-              :class="{ 'nav-link-active': $route.path === '/copilot' }"
-            >
-              Copilot Chat
+              {{ item.label }}
             </router-link>
           </div>
         </div>
-        <div class="flex items-center">
-          <div v-if="isAuthenticated" class="flex items-center space-x-3">
-            <router-link
-              to="/profile"
-              class="text-sm text-theme-textLight hidden sm:inline hover:text-theme-text transition-colors"
+
+        <div v-if="isAuthenticated" class="relative flex items-center" ref="dropdownRef">
+          <button
+            type="button"
+            class="flex items-center gap-2 rounded-full border border-theme-border bg-white pl-1 pr-2.5 py-1 text-left hover:bg-theme-hover focus:outline-none focus:ring-2 focus:ring-primary-800 focus:ring-offset-1 transition-colors"
+            :aria-expanded="open"
+            aria-haspopup="true"
+            aria-label="User menu"
+            @click.stop="toggleDropdown"
+          >
+            <span
+              class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary-200 text-sm font-medium text-theme-text"
+              aria-hidden="true"
             >
-              {{ user?.name || user?.email }}
-            </router-link>
-            <button
-              @click="handleLogout"
-              class="btn-secondary text-sm hidden sm:inline-flex"
+              {{ initials }}
+            </span>
+            <svg
+              class="h-4 w-4 text-theme-textLight transition-transform"
+              :class="{ 'rotate-180': open }"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true"
             >
-              Logout
-            </button>
-            <!-- Mobile Menu Button -->
-            <button
-              @click="toggleMobileMenu"
-              class="md:hidden p-2 rounded-md text-theme-text hover:bg-theme-hover focus:outline-none"
-              aria-label="Toggle menu"
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <Transition
+            enter-active-class="transition ease-out duration-100"
+            enter-from-class="opacity-0 scale-95"
+            enter-to-class="opacity-100 scale-100"
+            leave-active-class="transition ease-in duration-75"
+            leave-from-class="opacity-100 scale-100"
+            leave-to-class="opacity-0 scale-95"
+          >
+            <div
+              v-show="open"
+              class="absolute right-0 top-full z-50 mt-2 w-56 max-h-[24rem] overflow-y-auto rounded-lg border border-theme-border bg-white py-1 shadow-lg origin-top-right"
+              role="menu"
             >
-              <svg
-                v-if="!mobileMenuOpen"
-                class="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-              <svg
-                v-else
-                class="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
-          <div v-else class="flex items-center space-x-3">
-            <router-link
-              to="/login"
-              class="btn-secondary text-sm"
-            >
-              Login
-            </router-link>
-            <router-link
-              to="/signup"
-              class="btn-primary text-sm"
-            >
-              Sign Up
-            </router-link>
-          </div>
+              <div class="lg:hidden border-b border-theme-border py-1">
+                <router-link
+                  v-for="item in navItems"
+                  :key="item.to"
+                  :to="item.to"
+                  :class="[isActive(item.to) ? 'bg-theme-hover text-theme-text' : 'text-theme-text hover:bg-theme-hover']"
+                  class="block px-4 py-2 text-sm font-medium"
+                  role="menuitem"
+                  @click="open = false"
+                >
+                  {{ item.label }}
+                </router-link>
+              </div>
+              <div class="border-b border-theme-border px-4 py-3">
+                <p v-if="user?.name" class="text-sm font-semibold text-theme-text truncate">
+                  {{ user.name }}
+                </p>
+                <p class="text-sm truncate" :class="user?.name ? 'text-theme-textLight' : 'text-theme-text'">
+                  {{ user?.email ?? '' }}
+                </p>
+              </div>
+              <div class="py-1">
+                <router-link
+                  to="/profile"
+                  class="block px-4 py-2 text-sm text-theme-text hover:bg-theme-hover"
+                  role="menuitem"
+                  @click="open = false"
+                >
+                  Profile
+                </router-link>
+                <button
+                  type="button"
+                  class="block w-full px-4 py-2 text-left text-sm text-theme-text hover:bg-theme-hover"
+                  role="menuitem"
+                  @click="handleLogout"
+                >
+                  Logout
+                </button>
+              </div>
+            </div>
+          </Transition>
+        </div>
+
+        <div v-else class="flex items-center space-x-3">
+          <router-link to="/login" class="btn-secondary text-sm">Login</router-link>
+          <router-link to="/signup" class="btn-primary text-sm">Sign Up</router-link>
         </div>
       </div>
     </div>
-
-    <!-- Mobile Menu -->
-    <transition
-      enter-active-class="transition ease-out duration-200"
-      enter-from-class="opacity-0 -translate-y-1"
-      enter-to-class="opacity-100 translate-y-0"
-      leave-active-class="transition ease-in duration-150"
-      leave-from-class="opacity-100 translate-y-0"
-      leave-to-class="opacity-0 -translate-y-1"
-    >
-      <div
-        v-if="mobileMenuOpen && isAuthenticated"
-        class="md:hidden border-t border-theme-border bg-white"
-      >
-        <div class="px-6 py-4 space-y-1">
-          <router-link
-            to="/"
-            @click="closeMobileMenu"
-            class="block px-3 py-2 rounded-md text-sm font-medium transition-colors"
-            :class="
-              $route.path === '/'
-                ? 'bg-theme-hover text-theme-text'
-                : 'text-theme-textLight hover:bg-theme-hover hover:text-theme-text'
-            "
-          >
-            Home
-          </router-link>
-          <router-link
-            to="/dashboard"
-            @click="closeMobileMenu"
-            class="block px-3 py-2 rounded-md text-sm font-medium transition-colors"
-            :class="
-              $route.path === '/dashboard'
-                ? 'bg-theme-hover text-theme-text'
-                : 'text-theme-textLight hover:bg-theme-hover hover:text-theme-text'
-            "
-          >
-            Dashboard
-          </router-link>
-          <router-link
-            to="/form"
-            @click="closeMobileMenu"
-            class="block px-3 py-2 rounded-md text-sm font-medium transition-colors"
-            :class="
-              $route.path === '/form'
-                ? 'bg-theme-hover text-theme-text'
-                : 'text-theme-textLight hover:bg-theme-hover hover:text-theme-text'
-            "
-          >
-            Form
-          </router-link>
-          <router-link
-            to="/cards"
-            @click="closeMobileMenu"
-            class="block px-3 py-2 rounded-md text-sm font-medium transition-colors"
-            :class="
-              $route.path === '/cards'
-                ? 'bg-theme-hover text-theme-text'
-                : 'text-theme-textLight hover:bg-theme-hover hover:text-theme-text'
-            "
-          >
-            Cards
-          </router-link>
-          <router-link
-            to="/modals"
-            @click="closeMobileMenu"
-            class="block px-3 py-2 rounded-md text-sm font-medium transition-colors"
-            :class="
-              $route.path === '/modals'
-                ? 'bg-theme-hover text-theme-text'
-                : 'text-theme-textLight hover:bg-theme-hover hover:text-theme-text'
-            "
-          >
-            Modals
-          </router-link>
-          <router-link
-            to="/navigation"
-            @click="closeMobileMenu"
-            class="block px-3 py-2 rounded-md text-sm font-medium transition-colors"
-            :class="
-              $route.path === '/navigation'
-                ? 'bg-theme-hover text-theme-text'
-                : 'text-theme-textLight hover:bg-theme-hover hover:text-theme-text'
-            "
-          >
-            Navigation
-          </router-link>
-          <router-link
-            to="/users"
-            @click="closeMobileMenu"
-            class="block px-3 py-2 rounded-md text-sm font-medium transition-colors"
-            :class="
-              $route.path === '/users'
-                ? 'bg-theme-hover text-theme-text'
-                : 'text-theme-textLight hover:bg-theme-hover hover:text-theme-text'
-            "
-          >
-            Users
-          </router-link>
-          <router-link
-            to="/calendar"
-            @click="closeMobileMenu"
-            class="block px-3 py-2 rounded-md text-sm font-medium transition-colors"
-            :class="
-              $route.path === '/calendar'
-                ? 'bg-theme-hover text-theme-text'
-                : 'text-theme-textLight hover:bg-theme-hover hover:text-theme-text'
-            "
-          >
-            Calendar
-          </router-link>
-          <router-link
-            to="/profile"
-            @click="closeMobileMenu"
-            class="block px-3 py-2 rounded-md text-sm font-medium transition-colors"
-            :class="
-              $route.path === '/profile'
-                ? 'bg-theme-hover text-theme-text'
-                : 'text-theme-textLight hover:bg-theme-hover hover:text-theme-text'
-            "
-          >
-            Profile
-          </router-link>
-          <router-link
-            to="/subscription"
-            @click="closeMobileMenu"
-            class="block px-3 py-2 rounded-md text-sm font-medium transition-colors"
-            :class="
-              $route.path === '/subscription'
-                ? 'bg-theme-hover text-theme-text'
-                : 'text-theme-textLight hover:bg-theme-hover hover:text-theme-text'
-            "
-          >
-            Subscription
-          </router-link>
-          <router-link
-            to="/copilot"
-            @click="closeMobileMenu"
-            class="block px-3 py-2 rounded-md text-sm font-medium transition-colors"
-            :class="
-              $route.path === '/copilot'
-                ? 'bg-theme-hover text-theme-text'
-                : 'text-theme-textLight hover:bg-theme-hover hover:text-theme-text'
-            "
-          >
-            Copilot Chat
-          </router-link>
-          <div class="border-t border-theme-border mt-2 pt-2">
-            <div class="px-3 py-2 text-sm text-theme-textLight">
-              {{ user?.name || user?.email }}
-            </div>
-            <button
-              @click="handleMobileLogout"
-              class="w-full text-left px-3 py-2 rounded-md text-sm font-medium text-theme-textLight hover:bg-theme-hover hover:text-theme-text transition-colors"
-            >
-              Logout
-            </button>
-          </div>
-        </div>
-      </div>
-    </transition>
   </nav>
 </template>
 
 <script setup>
-import { ref, computed, watch } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import { useAuthStore } from '../stores/auth'
+import { useAuthStore } from '@/stores/auth'
 
 const router = useRouter()
 const route = useRoute()
 const authStore = useAuthStore()
 
-const mobileMenuOpen = ref(false)
+const dropdownRef = ref(null)
+const open = ref(false)
 
 const isAuthenticated = computed(() => authStore.isAuthenticated)
 const user = computed(() => authStore.user)
 
-const toggleMobileMenu = () => {
-  mobileMenuOpen.value = !mobileMenuOpen.value
+const navItems = [
+  { to: '/', label: 'Home' },
+  { to: '/dashboard', label: 'Dashboard' },
+  { to: '/form', label: 'Form' },
+  { to: '/cards', label: 'Cards' },
+  { to: '/modals', label: 'Modals' },
+  { to: '/users', label: 'Users' },
+  { to: '/calendar', label: 'Calendar' },
+  { to: '/themes', label: 'Themes' },
+  { to: '/copilot', label: 'Copilot' },
+]
+
+const initials = computed(() => {
+  const name = user.value?.name || user.value?.email || 'U'
+  const parts = name.split(/[\s@]/).filter(Boolean)
+  return ((parts[0]?.[0] || '') + (parts[1]?.[0] || '')).toUpperCase() || 'U'
+})
+
+function isActive(path) {
+  return route.path === path || (path !== '/' && route.path.startsWith(path + '/'))
 }
 
-const closeMobileMenu = () => {
-  mobileMenuOpen.value = false
+function toggleDropdown() {
+  open.value = !open.value
 }
 
-const handleLogout = () => {
+function handleLogout() {
+  open.value = false
   authStore.logout()
-  mobileMenuOpen.value = false
   router.push('/login')
 }
 
-const handleMobileLogout = () => {
-  handleLogout()
+function onClickOutside(event) {
+  if (dropdownRef.value && !dropdownRef.value.contains(event.target)) {
+    open.value = false
+  }
 }
 
-// Close mobile menu when route changes
-watch(() => route.path, () => {
-  mobileMenuOpen.value = false
+onMounted(() => {
+  document.addEventListener('click', onClickOutside)
+})
+
+onUnmounted(() => {
+  document.removeEventListener('click', onClickOutside)
 })
 </script>
-

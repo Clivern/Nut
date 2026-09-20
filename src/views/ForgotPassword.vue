@@ -103,7 +103,7 @@
 
       <!-- Footer -->
       <p class="text-center text-xs text-theme-textLight mt-8">
-        Copyright © 2025 Nut. All rights reserved.
+        Copyright © 2026 Nut. All rights reserved.
       </p>
     </div>
   </div>

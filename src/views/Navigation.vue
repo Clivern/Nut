@@ -13,7 +13,7 @@
         <p class="text-sm text-theme-textLight mb-4">
           The navigation bar is implemented as a reusable Vue component. It automatically highlights the active route.
         </p>
-        <div class="bg-[#F7F6F3] p-4 rounded text-xs overflow-x-auto">
+        <div class="bg-theme-hover p-4 rounded text-xs overflow-x-auto">
           <pre class="text-theme-text"><code>&lt;NavBar /&gt;</code></pre>
         </div>
       </div>

@@ -2,7 +2,7 @@
   <div class="min-h-screen bg-theme-bg">
     <NavBar />
 
-    <main class="w-full py-8 px-6 lg:px-8">
+    <main class="w-full px-4 sm:px-6 lg:px-8 py-8">
       <div class="page-header">
         <h1 class="page-title">Profile</h1>
         <p class="page-subtitle">Manage your account settings and preferences</p>
@@ -98,7 +98,18 @@
           <div class="card">
             <h3 class="text-lg font-semibold text-theme-text mb-6">Preferences</h3>
             <div class="space-y-4">
-              <div class="flex items-center justify-between py-2">
+              <div>
+                <label for="profile-theme" class="block text-xs font-medium text-theme-textLight uppercase tracking-wider mb-2">Theme</label>
+                <select
+                  id="profile-theme"
+                  v-model="preferences.theme"
+                  class="input-field max-w-xs"
+                  @change="onThemeChange"
+                >
+                  <option v-for="item in THEMES" :key="item.id" :value="item.id">{{ item.label }}</option>
+                </select>
+              </div>
+              <div class="flex items-center justify-between py-2 border-t border-theme-border">
                 <div>
                   <p class="text-sm font-medium text-theme-text">Email Notifications</p>
                   <p class="text-xs text-theme-textLight mt-1">Receive email updates about your account</p>
@@ -199,7 +210,9 @@
 
 <script setup>
 import { ref, computed } from 'vue'
-import NavBar from '../components/NavBar.vue'
+import NavBar from '@/components/NavBar.vue'
+import { THEMES, applyTheme, readStoredTheme } from '@/lib/preferences'
+import { showFlash } from '@/lib/flash'
 
 const profile = ref({
   name: 'John Doe',
@@ -215,6 +228,7 @@ const password = ref({
 })
 
 const preferences = ref({
+  theme: readStoredTheme(),
   emailNotifications: true,
   marketingEmails: false,
   twoFactor: false
@@ -234,27 +248,26 @@ const profileInitials = computed(() => {
   return profile.value.name.substring(0, 2).toUpperCase()
 })
 
+const onThemeChange = () => {
+  applyTheme(preferences.value.theme)
+}
+
 const saveProfile = () => {
-  // Handle profile save logic
-  console.log('Saving profile:', profile.value)
-  alert('Profile updated successfully!')
+  showFlash('Profile updated')
 }
 
 const updatePassword = () => {
-  // Handle password update logic
   if (password.value.new !== password.value.confirm) {
-    alert('Passwords do not match!')
+    showFlash('Passwords do not match')
     return
   }
-  console.log('Updating password')
-  alert('Password updated successfully!')
   password.value = { current: '', new: '', confirm: '' }
+  showFlash('Password updated')
 }
 
 const savePreferences = () => {
-  // Handle preferences save logic
-  console.log('Saving preferences:', preferences.value)
-  alert('Preferences saved successfully!')
+  applyTheme(preferences.value.theme)
+  showFlash('Preferences saved')
 }
 </script>
 

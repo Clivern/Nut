@@ -19,6 +19,8 @@ import Calendar from '../views/Calendar.vue'
 import Profile from '../views/Profile.vue'
 import Subscription from '../views/Subscription.vue'
 import CopilotChat from '../views/CopilotChat.vue'
+import Themes from '../views/Themes.vue'
+import Empty from '../views/Empty.vue'
 
 const routes = [
   {
@@ -110,6 +112,16 @@ const routes = [
     path: '/copilot',
     name: 'CopilotChat',
     component: CopilotChat
+  },
+  {
+    path: '/themes',
+    name: 'Themes',
+    component: Themes
+  },
+  {
+    path: '/empty',
+    name: 'Empty',
+    component: Empty
   },
   {
     path: '/500',

@@ -5,11 +5,28 @@
     <link rel="icon" type="image/png" href="/logo.png">
     <link rel="apple-touch-icon" href="/logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Style Guide</title>
+    <meta name="theme-color" content="#37352F">
+    <title>Nut Style Guide</title>
+    <script>
+      (function () {
+        try {
+          var themeClasses = {
+            blue: 'theme-blue',
+            slate: 'theme-slate',
+            emerald: 'theme-emerald',
+            dark: 'theme-dark'
+          };
+          var theme = localStorage.getItem('_ftheme');
+          if (theme && themeClasses[theme]) document.documentElement.classList.add(themeClasses[theme]);
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
   </head>
   <body>
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
-

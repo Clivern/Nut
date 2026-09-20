@@ -2,87 +2,76 @@
   <div class="min-h-screen bg-theme-bg">
     <NavBar />
 
-    <main class="w-full py-8 px-6 lg:px-8">
-      <div class="page-header">
-        <h1 class="page-title">Dashboard</h1>
-      </div>
+    <main class="w-full px-4 sm:px-6 lg:px-8 py-8">
+      <header class="mb-8">
+        <h1 class="text-2xl sm:text-3xl font-semibold text-theme-text tracking-tight">Dashboard</h1>
+        <p class="mt-1 text-sm text-theme-textLight">Overview of traffic, health, and recent activity</p>
+      </header>
 
-      <!-- Stats Grid -->
-      <div class="mb-6">
-        <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          <div class="stat-card">
-            <p class="stat-label">Status</p>
-            <p class="stat-value">{{ stats.status }}</p>
-          </div>
-
-          <div class="stat-card">
-            <p class="stat-label">Total Requests</p>
-            <p class="stat-value">{{ stats.totalRequests.toLocaleString() }}</p>
-          </div>
-
-          <div class="stat-card">
-            <p class="stat-label">Avg Response</p>
-            <p class="stat-value">{{ stats.avgResponse }}ms</p>
-          </div>
-
-          <div class="stat-card">
-            <p class="stat-label">Active Gateways</p>
-            <p class="stat-value">{{ stats.activeGateways }}</p>
-          </div>
+      <div class="mb-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="stat-card">
+          <p class="stat-label">Status</p>
+          <p class="stat-value">{{ stats.status }}</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-label">Total Requests</p>
+          <p class="stat-value">{{ stats.totalRequests.toLocaleString() }}</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-label">Avg Response</p>
+          <p class="stat-value">{{ stats.avgResponse }}ms</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-label">Active Gateways</p>
+          <p class="stat-value">{{ stats.activeGateways }}</p>
         </div>
       </div>
 
-      <!-- Content Grid -->
-      <div class="grid grid-cols-1 gap-3 lg:grid-cols-2">
-        <!-- Recent Activity -->
-        <div class="card">
-          <h3 class="text-sm font-semibold text-theme-text mb-5">Recent Activity</h3>
-          <div class="space-y-4">
-            <div
-              v-for="activity in recentActivities"
-              :key="activity.id"
-              class="pb-4 last:pb-0 border-b border-theme-border last:border-0"
-            >
+      <section class="mb-6 grid grid-cols-1 gap-6 lg:grid-cols-2">
+        <div class="section overflow-hidden !p-0">
+          <div class="border-b border-theme-border px-6 py-4">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <div>
+                <h2 class="text-lg font-semibold text-theme-text">Needs attention</h2>
+                <p class="mt-0.5 text-sm text-theme-textLight">Items that should be reviewed</p>
+              </div>
+              <span class="rounded-full border border-amber-200 bg-amber-50 px-2.5 py-0.5 text-xs font-medium text-amber-800">
+                Mock
+              </span>
+            </div>
+          </div>
+          <ul class="divide-y divide-theme-border">
+            <li v-for="item in attentionItems" :key="item.id" class="flex gap-4 px-6 py-4">
+              <span class="mt-1.5 h-2 w-2 shrink-0 rounded-full" :class="item.dot" aria-hidden="true" />
+              <div class="min-w-0 flex-1">
+                <p class="text-sm font-medium text-theme-text">{{ item.title }}</p>
+                <p class="mt-0.5 text-sm text-theme-textLight leading-relaxed">{{ item.description }}</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="section overflow-hidden !p-0">
+          <div class="border-b border-theme-border px-6 py-4">
+            <h2 class="text-lg font-semibold text-theme-text">Recent activity</h2>
+            <p class="mt-0.5 text-sm text-theme-textLight">Latest events on this workspace</p>
+          </div>
+          <div class="divide-y divide-theme-border">
+            <div v-for="activity in recentActivities" :key="activity.id" class="px-6 py-4">
               <p class="text-sm font-medium text-theme-text">{{ activity.title }}</p>
               <p class="text-sm text-theme-textLight mt-1">{{ activity.description }}</p>
               <p class="text-xs text-theme-textLight mt-1.5">{{ activity.time }}</p>
             </div>
           </div>
         </div>
+      </section>
 
-        <!-- System Info -->
-        <div class="card">
-          <h3 class="text-sm font-semibold text-theme-text mb-5">System Information</h3>
-          <div class="space-y-3">
-            <div class="flex justify-between py-2.5 border-b border-theme-border">
-              <span class="text-sm text-theme-textLight">Version</span>
-              <span class="text-sm font-medium text-theme-text">v0.1.0</span>
-            </div>
-            <div class="flex justify-between py-2.5 border-b border-theme-border">
-              <span class="text-sm text-theme-textLight">Uptime</span>
-              <span class="text-sm font-medium text-theme-text">{{ systemInfo.uptime }}</span>
-            </div>
-            <div class="flex justify-between py-2.5 border-b border-theme-border">
-              <span class="text-sm text-theme-textLight">Memory Usage</span>
-              <span class="text-sm font-medium text-theme-text">{{ systemInfo.memory }}</span>
-            </div>
-            <div class="flex justify-between py-2.5">
-              <span class="text-sm text-theme-textLight">CPU Usage</span>
-              <span class="text-sm font-medium text-theme-text">{{ systemInfo.cpu }}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Quick Actions -->
-      <div class="mt-3">
-        <div class="card">
-          <h3 class="text-sm font-semibold text-theme-text mb-4">Quick Actions</h3>
-          <div class="flex flex-wrap gap-2">
-            <button class="btn-primary">Add Gateway</button>
-            <button class="btn-secondary">Configure</button>
-            <button class="btn-secondary">View Analytics</button>
-          </div>
+      <div class="card">
+        <h3 class="text-sm font-semibold text-theme-text mb-4">Quick Actions</h3>
+        <div class="flex flex-wrap gap-2">
+          <button type="button" class="btn-primary" @click="showFlash('Gateway added')">Add Gateway</button>
+          <button type="button" class="btn-secondary">Configure</button>
+          <button type="button" class="btn-secondary">View Analytics</button>
         </div>
       </div>
     </main>
@@ -91,7 +80,8 @@
 
 <script setup>
 import { ref } from 'vue'
-import NavBar from '../components/NavBar.vue'
+import NavBar from '@/components/NavBar.vue'
+import { showFlash } from '@/lib/flash'
 
 const stats = ref({
   status: 'Online',
@@ -99,6 +89,27 @@ const stats = ref({
   avgResponse: 145,
   activeGateways: 3
 })
+
+const attentionItems = ref([
+  {
+    id: 1,
+    title: 'Certificate expires in 7 days',
+    description: 'Renew the TLS cert on gateway-prod before traffic is interrupted.',
+    dot: 'bg-amber-500'
+  },
+  {
+    id: 2,
+    title: 'Error rate above 2%',
+    description: 'Checkout API returned 5xx on 48 requests in the last hour.',
+    dot: 'bg-red-500'
+  },
+  {
+    id: 3,
+    title: 'Unused integration',
+    description: 'Slack notifications have not fired in 14 days.',
+    dot: 'bg-sky-500'
+  }
+])
 
 const recentActivities = ref([
   {
@@ -126,11 +137,4 @@ const recentActivities = ref([
     time: '30 minutes ago'
   }
 ])
-
-const systemInfo = ref({
-  uptime: '7 days, 14 hours',
-  memory: '245 MB / 2 GB',
-  cpu: '12%'
-})
 </script>
-

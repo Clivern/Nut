@@ -94,7 +94,7 @@
       </div>
 
       <!-- Alert Cards -->
-      <div>
+      <div class="mb-8">
         <h2 class="text-lg font-semibold text-theme-text mb-4">Alert Messages</h2>
         <div class="space-y-3">
           <div class="alert-success">
@@ -105,11 +105,20 @@
           </div>
         </div>
       </div>
+
+      <div>
+        <h2 class="text-lg font-semibold text-theme-text mb-4">Flash notice</h2>
+        <div class="card">
+          <p class="text-sm text-theme-textLight mb-4">Toast used after saves in Ziee-style product dashboards.</p>
+          <button type="button" class="btn-primary" @click="showFlash('Changes saved')">Show flash</button>
+        </div>
+      </div>
     </main>
   </div>
 </template>
 
 <script setup>
-import NavBar from '../components/NavBar.vue'
+import NavBar from '@/components/NavBar.vue'
+import { showFlash } from '@/lib/flash'
 </script>
 

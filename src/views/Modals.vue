@@ -81,7 +81,7 @@
       <!-- Alert Modal -->
       <Modal v-model="showAlertModal" title="Alert" :show-close="false">
         <div class="flex items-start">
-          <div class="flex-shrink-0">
+          <div class="shrink-0">
             <div class="h-10 w-10 rounded-full bg-yellow-100 flex items-center justify-center">
               <svg class="h-6 w-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
@@ -180,7 +180,7 @@
         <p class="text-sm text-theme-textLight mb-4">
           This is a large modal with even more space for content. Perfect for forms, detailed information, or complex interactions.
         </p>
-        <div class="bg-[#F7F6F3] p-4 rounded">
+        <div class="bg-theme-hover p-4 rounded">
           <p class="text-xs text-theme-textLight">
             You can include any content here, such as forms, tables, or rich media.
           </p>
@@ -197,11 +197,11 @@
           This is an extra-large modal with maximum space for content. Ideal for complex forms, data tables, or detailed views.
         </p>
         <div class="grid grid-cols-2 gap-4 mb-4">
-          <div class="bg-[#F7F6F3] p-4 rounded">
+          <div class="bg-theme-hover p-4 rounded">
             <p class="text-xs font-medium text-theme-text mb-2">Column 1</p>
             <p class="text-xs text-theme-textLight">Content goes here</p>
           </div>
-          <div class="bg-[#F7F6F3] p-4 rounded">
+          <div class="bg-theme-hover p-4 rounded">
             <p class="text-xs font-medium text-theme-text mb-2">Column 2</p>
             <p class="text-xs text-theme-textLight">Content goes here</p>
           </div>
@@ -218,7 +218,7 @@
         <div class="space-y-4">
           <div>
             <p class="text-sm font-medium text-theme-text mb-2">Basic Usage</p>
-            <div class="bg-[#F7F6F3] p-4 rounded text-xs overflow-x-auto">
+            <div class="bg-theme-hover p-4 rounded text-xs overflow-x-auto">
               <pre class="text-theme-text"><code>&lt;Modal v-model="showModal" title="Modal Title"&gt;
   &lt;p&gt;Modal content&lt;/p&gt;
   &lt;template #footer&gt;
@@ -230,19 +230,19 @@
           <div>
             <p class="text-sm font-medium text-theme-text mb-2">Props</p>
             <ul class="text-xs text-theme-textLight space-y-1">
-              <li><code class="bg-[#F7F6F3] px-1 rounded">v-model</code> - Boolean to control modal visibility</li>
-              <li><code class="bg-[#F7F6F3] px-1 rounded">title</code> - Modal title (optional)</li>
-              <li><code class="bg-[#F7F6F3] px-1 rounded">size</code> - Modal size: sm, md, lg, xl (default: md)</li>
-              <li><code class="bg-[#F7F6F3] px-1 rounded">showClose</code> - Show close button (default: true)</li>
-              <li><code class="bg-[#F7F6F3] px-1 rounded">closeOnBackdrop</code> - Close on backdrop click (default: true)</li>
+              <li><code class="bg-theme-hover px-1 rounded">v-model</code> - Boolean to control modal visibility</li>
+              <li><code class="bg-theme-hover px-1 rounded">title</code> - Modal title (optional)</li>
+              <li><code class="bg-theme-hover px-1 rounded">size</code> - Modal size: sm, md, lg, xl (default: md)</li>
+              <li><code class="bg-theme-hover px-1 rounded">showClose</code> - Show close button (default: true)</li>
+              <li><code class="bg-theme-hover px-1 rounded">closeOnBackdrop</code> - Close on backdrop click (default: true)</li>
             </ul>
           </div>
           <div>
             <p class="text-sm font-medium text-theme-text mb-2">Slots</p>
             <ul class="text-xs text-theme-textLight space-y-1">
-              <li><code class="bg-[#F7F6F3] px-1 rounded">default</code> - Main modal content</li>
-              <li><code class="bg-[#F7F6F3] px-1 rounded">header</code> - Custom header content</li>
-              <li><code class="bg-[#F7F6F3] px-1 rounded">footer</code> - Footer content (buttons, etc.)</li>
+              <li><code class="bg-theme-hover px-1 rounded">default</code> - Main modal content</li>
+              <li><code class="bg-theme-hover px-1 rounded">header</code> - Custom header content</li>
+              <li><code class="bg-theme-hover px-1 rounded">footer</code> - Footer content (buttons, etc.)</li>
             </ul>
           </div>
         </div>
