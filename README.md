@@ -29,13 +29,13 @@ npm run preview
 
 ## GitHub Pages
 
-The demo is served from the `docs/` directory on `main` at `https://clivern.github.io/Nut/`.
+The demo is served from the `docs/` directory on `main` at `https://nut.clivern.com/`. The custom domain lives in `public/CNAME`, which Vite copies into `docs/` on every build.
 
 ```bash
 make docs   # or: npm run build:docs
 ```
 
-Commit the regenerated `docs/` folder to publish. `404.html` is a copy of `index.html` so deep links like `/Nut/traces` load the app.
+Commit the regenerated `docs/` folder to publish. `404.html` is a copy of `index.html` so deep links like `/traces` load the app.
 
 ## Themes
 
