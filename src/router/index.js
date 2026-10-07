@@ -25,6 +25,8 @@ import SelectWorkspace from '../views/SelectWorkspace.vue'
 import CreateWorkspace from '../views/CreateWorkspace.vue'
 import Charts from '../views/Charts.vue'
 import Metrics from '../views/Metrics.vue'
+import Traces from '../views/Traces.vue'
+import TraceDetail from '../views/TraceDetail.vue'
 
 const routes = [
   {
@@ -91,6 +93,16 @@ const routes = [
     path: '/metrics',
     name: 'Metrics',
     component: Metrics
+  },
+  {
+    path: '/traces',
+    name: 'Traces',
+    component: Traces
+  },
+  {
+    path: '/traces/:id',
+    name: 'TraceDetail',
+    component: TraceDetail
   },
   {
     path: '/modals',
