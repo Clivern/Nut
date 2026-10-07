@@ -1,0 +1,50 @@
+name: Docs
+
+on:
+  push:
+    branches: [ main ]
+    paths-ignore:
+      - 'docs/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: docs
+  cancel-in-progress: true
+
+jobs:
+  docs:
+    name: Build GitHub Pages
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v7
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v7
+      with:
+        node-version: '20.x'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: make ci-install
+
+    - name: Build docs
+      run: make docs
+
+    # Pushes made with GITHUB_TOKEN don't trigger workflows, so this can't loop.
+    - name: Commit docs
+      run: |
+        git config user.name "clivern"
+        git config user.email "hello@clivern.com"
+        git add -A docs
+        if git diff --cached --quiet; then
+          echo "docs/ is up to date"
+          exit 0
+        fi
+        git commit -m "docs: rebuild GitHub Pages site"
+        git pull --rebase origin main
+        git push origin HEAD:main

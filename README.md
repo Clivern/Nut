@@ -35,7 +35,7 @@ The demo is served from the `docs/` directory on `main` at `https://nut.clivern.
 make docs   # or: npm run build:docs
 ```
 
-Commit the regenerated `docs/` folder to publish. `404.html` is a copy of `index.html` so deep links like `/traces` load the app.
+The `Docs` workflow rebuilds `docs/` on every push to `main` and commits it as `clivern`, so you don't need to commit it yourself. Run `make docs` locally only to preview the Pages build. `404.html` is a copy of `index.html` so deep links like `/traces` load the app.
 
 ## Themes
 
