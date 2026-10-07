@@ -45,6 +45,6 @@ jobs:
           echo "docs/ is up to date"
           exit 0
         fi
-        git commit -m "docs: rebuild GitHub Pages site"
+        git commit -m "chore(docs): rebuild website nut.clivern.com"
         git pull --rebase origin main
         git push origin HEAD:main
