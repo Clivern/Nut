@@ -24,6 +24,7 @@ import Empty from '../views/Empty.vue'
 import SelectWorkspace from '../views/SelectWorkspace.vue'
 import CreateWorkspace from '../views/CreateWorkspace.vue'
 import Charts from '../views/Charts.vue'
+import Metrics from '../views/Metrics.vue'
 
 const routes = [
   {
@@ -85,6 +86,11 @@ const routes = [
     path: '/charts',
     name: 'Charts',
     component: Charts
+  },
+  {
+    path: '/metrics',
+    name: 'Metrics',
+    component: Metrics
   },
   {
     path: '/modals',
