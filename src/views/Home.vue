@@ -63,6 +63,33 @@
 
         <router-link
           v-if="isAuthenticated"
+          to="/charts"
+          class="card hover:shadow-md transition-shadow"
+        >
+          <h3 class="text-sm font-semibold text-theme-text mb-2">Charts</h3>
+          <p class="text-sm text-theme-textLight">Line, area, column, heatmap, sparkline, and meter components</p>
+        </router-link>
+
+        <router-link
+          v-if="isAuthenticated"
+          to="/metrics"
+          class="card hover:shadow-md transition-shadow"
+        >
+          <h3 class="text-sm font-semibold text-theme-text mb-2">Metrics</h3>
+          <p class="text-sm text-theme-textLight">Monitoring dashboard with throughput, latency, errors, and saturation</p>
+        </router-link>
+
+        <router-link
+          v-if="isAuthenticated"
+          to="/traces"
+          class="card hover:shadow-md transition-shadow"
+        >
+          <h3 class="text-sm font-semibold text-theme-text mb-2">Traces</h3>
+          <p class="text-sm text-theme-textLight">Trace explorer with duration scatter and a span waterfall view</p>
+        </router-link>
+
+        <router-link
+          v-if="isAuthenticated"
           to="/modals"
           class="card hover:shadow-md transition-shadow"
         >

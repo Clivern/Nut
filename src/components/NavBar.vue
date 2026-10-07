@@ -8,7 +8,7 @@
               <img src="/logo.png" alt="Nut" class="h-8 w-8 object-contain" />
             </router-link>
           </div>
-          <div v-if="isAuthenticated" class="hidden lg:ml-8 lg:flex lg:space-x-1">
+          <div v-if="isAuthenticated" class="hidden xl:ml-8 xl:flex xl:space-x-1">
             <router-link
               v-for="item in navItems"
               :key="item.to"
@@ -59,7 +59,7 @@
               class="absolute right-0 top-full z-50 mt-2 w-56 max-h-[24rem] overflow-y-auto rounded-lg border border-theme-border bg-white py-1 shadow-lg origin-top-right"
               role="menu"
             >
-              <div class="lg:hidden border-b border-theme-border py-1">
+              <div class="xl:hidden border-b border-theme-border py-1">
                 <router-link
                   v-for="item in navItems"
                   :key="item.to"
@@ -149,6 +149,9 @@ const navItems = [
   { to: '/dashboard', label: 'Dashboard' },
   { to: '/form', label: 'Form' },
   { to: '/cards', label: 'Cards' },
+  { to: '/charts', label: 'Charts' },
+  { to: '/metrics', label: 'Metrics' },
+  { to: '/traces', label: 'Traces' },
   { to: '/modals', label: 'Modals' },
   { to: '/users', label: 'Users' },
   { to: '/calendar', label: 'Calendar' },

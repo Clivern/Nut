@@ -7,6 +7,7 @@ A reusable dashboard kit for Vue 3. Nut is the design system behind newer produc
 - Vue 3 + Vite 8 + Tailwind CSS 4
 - Themes: default, blue, slate, emerald, dark
 - Auth screens, workspace select and create, dashboard, forms, cards, modals, users, calendar
+- Dependency-free SVG charts (line, area, stacked columns, heatmap, scatter, sparklines) plus metrics and distributed tracing pages
 - Flash notices, empty states, and a cookie consent banner
 - Inter, token-based colors, and components that follow the active theme
 
