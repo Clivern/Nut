@@ -27,20 +27,6 @@ npm run build
 npm run preview
 ```
 
-## GitHub Pages
-
-The demo is served from the `docs/` directory on `main` at `https://nut.clivern.com/`. The custom domain lives in `public/CNAME`, which Vite copies into `docs/` on every build.
-
-```bash
-make docs   # or: npm run build:docs
-```
-
-The `Docs` workflow rebuilds `docs/` on every push to `main` and commits it as `clivern`, so you don't need to commit it yourself. Run `make docs` locally only to preview the Pages build. `404.html` is a copy of `index.html` so deep links like `/traces` load the app.
-
-## Themes
-
-Pick a theme on `/themes` or in Profile. The class is stored in `localStorage` (`_ftheme`) and applied on `<html>` before first paint.
-
 ## License
 
 MIT
