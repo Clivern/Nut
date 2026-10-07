@@ -148,6 +148,41 @@
   --btn-secondary-hover: #1F2937;
 }
 
+/* Chart tokens (categorical order is fixed; validated for CVD on white and #1F2937) */
+:root {
+  --chart-1: #2a78d6;
+  --chart-2: #eb6834;
+  --chart-3: #1baf7a;
+  --chart-4: #eda100;
+  --chart-5: #e87ba4;
+  --chart-grid: var(--theme-border);
+  --chart-axis: var(--primary-300);
+  --status-good: #0ca30c;
+  --status-warning: #fab219;
+  --status-serious: #ec835a;
+  --status-critical: #d03b3b;
+  --seq-1: #cde2fb;
+  --seq-2: #9ec5f4;
+  --seq-3: #6da7ec;
+  --seq-4: #3987e5;
+  --seq-5: #256abf;
+  --seq-6: #184f95;
+}
+
+.theme-dark {
+  --chart-1: #3987e5;
+  --chart-2: #d95926;
+  --chart-3: #199e70;
+  --chart-4: #c98500;
+  --chart-5: #d55181;
+  --seq-1: #184f95;
+  --seq-2: #1c5cab;
+  --seq-3: #2a78d6;
+  --seq-4: #5598e7;
+  --seq-5: #86b6ef;
+  --seq-6: #b7d3f6;
+}
+
 .theme-dark .bg-white {
   background-color: var(--surface);
 }
@@ -299,6 +334,22 @@
 
   .spinner {
     @apply animate-spin h-4 w-4;
+  }
+
+  .chart-tooltip {
+    @apply pointer-events-none absolute z-10 min-w-36 rounded-md border border-theme-border px-3 py-2 text-xs shadow-lg;
+    background-color: var(--surface);
+    color: var(--theme-text);
+  }
+
+  .chart-axis-label {
+    font-size: 11px;
+    fill: var(--theme-textLight);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium;
   }
 
   .code-block {
