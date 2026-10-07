@@ -23,6 +23,7 @@ import Themes from '../views/Themes.vue'
 import Empty from '../views/Empty.vue'
 import SelectWorkspace from '../views/SelectWorkspace.vue'
 import CreateWorkspace from '../views/CreateWorkspace.vue'
+import Charts from '../views/Charts.vue'
 
 const routes = [
   {
@@ -79,6 +80,11 @@ const routes = [
     path: '/cards',
     name: 'Cards',
     component: Cards
+  },
+  {
+    path: '/charts',
+    name: 'Charts',
+    component: Charts
   },
   {
     path: '/modals',
