@@ -4,7 +4,11 @@ import tailwindcss from '@tailwindcss/vite'
 import path from 'path'
 
 export default defineConfig({
-  plugins: [vue(), tailwindcss()],
+  plugins: [
+    // Bundle root-relative asset URLs in templates (e.g. /logo.png) so they respect `base`.
+    vue({ template: { transformAssetUrls: { includeAbsolute: true } } }),
+    tailwindcss(),
+  ],
   resolve: {
     alias: {
       '@': path.resolve(import.meta.dirname, './src'),

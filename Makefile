@@ -1,4 +1,4 @@
-.PHONY: help install dev build clean serve check-deps stop-dev validate
+.PHONY: help install dev build docs clean serve check-deps stop-dev validate
 
 # Default target
 .DEFAULT_GOAL := help
@@ -41,6 +41,11 @@ build: check-deps ## Build project for production
 	@echo "Building project for production..."
 	$(NPM) run build
 	@echo "Build complete! Output: $(DIST)/"
+
+docs: check-deps ## Build the GitHub Pages site into docs/
+	@echo "Building GitHub Pages site..."
+	$(NPM) run build:docs
+	@echo "Pages build complete! Output: docs/"
 
 preview: ## Preview production build
 	@if [ ! -d "$(DIST)" ]; then \

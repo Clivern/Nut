@@ -27,6 +27,16 @@ npm run build
 npm run preview
 ```
 
+## GitHub Pages
+
+The demo is served from the `docs/` directory on `main` at `https://clivern.github.io/Nut/`.
+
+```bash
+make docs   # or: npm run build:docs
+```
+
+Commit the regenerated `docs/` folder to publish. `404.html` is a copy of `index.html` so deep links like `/Nut/traces` load the app.
+
 ## Themes
 
 Pick a theme on `/themes` or in Profile. The class is stored in `localStorage` (`_ftheme`) and applied on `<html>` before first paint.
