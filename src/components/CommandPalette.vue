@@ -162,7 +162,7 @@ function rank(items, q, limit = Infinity) {
     .filter((r) => r.s > 0)
     .sort((a, b) => b.s - a.s)
     .slice(0, limit)
-    .map((r) => r.item)
+    .map((r) => ({ ...r.item, score: r.s }))
 }
 
 const pageItems = computed(() =>
@@ -238,6 +238,7 @@ const traceItems = computed(() => {
       hint: `${formatDuration(trace.duration)} · ${trace.status}`,
       mono: true,
       run: () => router.push(`/traces/${trace.id}`),
+      score: trace.id.startsWith(q) ? 4 : 2,
     }))
 })
 
@@ -250,6 +251,12 @@ const groups = computed(() => {
     { name: 'Workspaces', items: rank(workspaceItems.value, q, 5) },
     { name: 'Traces', items: traceItems.value },
   ].filter((group) => group.items.length)
+
+  // With a query, lead with the group holding the best match so Enter picks it.
+  if (q) {
+    const best = (group) => Math.max(...group.items.map((item) => item.score))
+    result.sort((a, b) => best(b) - best(a))
+  }
 
   let index = 0
   return result.map((group) => ({
@@ -324,7 +331,6 @@ function isTypingTarget(target) {
 }
 
 function onGlobalKeydown(event) {
-  if (!authStore.isAuthenticated.value) return
   if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
     event.preventDefault()
     toggleCommandPalette()
@@ -333,10 +339,6 @@ function onGlobalKeydown(event) {
     openCommandPalette()
   }
 }
-
-watch(authStore.isAuthenticated, (isAuthenticated) => {
-  if (!isAuthenticated) close()
-})
 
 onMounted(() => {
   window.addEventListener('keydown', onGlobalKeydown)
