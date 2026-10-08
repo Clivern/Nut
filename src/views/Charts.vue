@@ -14,7 +14,7 @@
           <p class="stat-label">{{ tile.label }}</p>
           <div class="flex items-baseline justify-between gap-2">
             <p class="stat-value">{{ tile.value }}</p>
-            <span class="text-xs font-medium" :class="tile.good ? 'text-green-700' : 'text-red-700'">
+            <span class="text-xs font-medium" :class="tile.good ? 'stat-delta-good' : 'stat-delta-bad'">
               {{ tile.delta }}
             </span>
           </div>
