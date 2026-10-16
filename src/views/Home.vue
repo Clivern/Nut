@@ -99,6 +99,15 @@
 
         <router-link
           v-if="isAuthenticated"
+          to="/assistant"
+          class="card hover:shadow-md transition-shadow"
+        >
+          <h3 class="text-sm font-semibold text-theme-text mb-2">Assistant</h3>
+          <p class="text-sm text-theme-textLight">Floating chat assistant with a typed greeting, streamed Markdown answers and saved chats</p>
+        </router-link>
+
+        <router-link
+          v-if="isAuthenticated"
           to="/navigation"
           class="card hover:shadow-md transition-shadow"
         >

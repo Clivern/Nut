@@ -19,6 +19,7 @@ import Calendar from '../views/Calendar.vue'
 import Profile from '../views/Profile.vue'
 import Subscription from '../views/Subscription.vue'
 import CopilotChat from '../views/CopilotChat.vue'
+import Assistant from '../views/Assistant.vue'
 import Themes from '../views/Themes.vue'
 import Empty from '../views/Empty.vue'
 import SelectWorkspace from '../views/SelectWorkspace.vue'
@@ -138,6 +139,11 @@ const routes = [
     path: '/copilot',
     name: 'CopilotChat',
     component: CopilotChat
+  },
+  {
+    path: '/assistant',
+    name: 'Assistant',
+    component: Assistant
   },
   {
     path: '/themes',

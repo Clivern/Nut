@@ -172,6 +172,7 @@ const navItems = [
   { to: '/calendar', label: 'Calendar' },
   { to: '/themes', label: 'Themes' },
   { to: '/copilot', label: 'Copilot' },
+  { to: '/assistant', label: 'Assistant' },
 ]
 
 const initials = computed(() => {
